@@ -11,5 +11,14 @@ let package = Package(
     targets: [
         .target(name: "Bob"),
         .testTarget(name: "BobTests", dependencies: ["Bob"]),
+
+        .executableTarget(name: "Benchmarks", dependencies: [
+            .target(name: "Bob"),
+            .product(name: "Benchmark", package: "swift-benchmark"),
+        ]),
     ]
 )
+
+package.dependencies = [
+    .package(url: "https://github.com/google/swift-benchmark", from: "0.1.2"),
+]
