@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "**"
+  schedule:
+    - cron: '3 3 * * 2'  # 3:03 AM, every Tuesday
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # macOS:
+  #   name: ${{ matrix.platform }} (Swift ${{ matrix.swift }})
+  #   runs-on: macos-12
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       platform:
+  #         - iOS
+  #         - macOS
+  #         - tvOS
+  #         - watchOS
+  #       swift:
+  #         - 5.5
+  #         - 5.6
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: mxcl/xcodebuild@v1
+  #       with:
+  #         platform: ${{ matrix.platform }}
+  #         swift: ~${{ matrix.swift }}
+  #         warnings-as-errors: true
+  linux:
+    name: Linux (Swift ${{ matrix.swift }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        swift:
+          - 5.5
+          - 5.6
+    container:
+      image: swift:${{ matrix.swift }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: swift test --parallel --sanitize=thread -Xswiftc -warnings-as-errors
