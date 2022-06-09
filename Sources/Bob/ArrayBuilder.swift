@@ -48,7 +48,6 @@ public struct ArrayBuilder<Element> {
 extension Array {
     public typealias Builder = ArrayBuilder<Element>
 
-    @inlinable
     public static func build(@Builder _ build: () -> Self) -> Self {
         build()
     }

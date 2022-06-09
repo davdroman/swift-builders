@@ -16,7 +16,6 @@ public struct DictionaryBuilder<Key: Hashable, Value> {
 extension Dictionary {
     public typealias Builder = DictionaryBuilder<Key, Value>
 
-    @inlinable
     public static func build(@Builder _ build: () -> Self) -> Self {
         build()
     }
