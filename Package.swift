@@ -4,19 +4,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "Bob",
+    name: "swift-builders",
     products: [
-        .library(name: "Bob", targets: ["Bob"]),
+        .library(name: "Builders", targets: ["Builders"]),
     ],
     targets: [
-        .target(name: "Bob"),
-        .testTarget(name: "BobTests", dependencies: [
-            .target(name: "Bob"),
+        .target(name: "Builders"),
+        .testTarget(name: "BuildersTests", dependencies: [
+            .target(name: "Builders"),
             .target(name: "Utils"),
         ]),
 
         .executableTarget(name: "Benchmarks", dependencies: [
-            .target(name: "Bob"),
+            .target(name: "Builders"),
             .product(name: "Benchmark", package: "swift-benchmark"),
             .target(name: "Utils"),
         ]),

@@ -1,14 +1,14 @@
-import Bob
+import Builders
 import Utils
 import XCTest
 
-final class SubstringUnicodeScalarBuilderTests: XCTestCase {
+final class StringUnicodeScalarBuilderTests: XCTestCase {
     func testBuilder() {
-        let sut = Substring.UnicodeScalarView.build {
+        let sut = String.UnicodeScalarView.build {
             if true {
                 "1"
             }
-            "false"[...].unicodeScalars
+            "false".unicodeScalars
             if `false` {
                 "c"
             } else if `false` {
@@ -17,10 +17,10 @@ final class SubstringUnicodeScalarBuilderTests: XCTestCase {
                 "e"
             }
             for i in 0..<3 {
-                "\(i)"[...].unicodeScalars
+                "\(i)".unicodeScalars
             }
             "1"
         }
-        XCTAssert(sut.elementsEqual("1falsee0121"[...].unicodeScalars))
+        XCTAssert(sut.elementsEqual("1falsee0121".unicodeScalars))
     }
 }

@@ -1,5 +1,5 @@
 import Benchmark
-import Bob
+import Builders
 import Utils
 
 let contiguousArray = BenchmarkSuite(name: "") {
