@@ -58,12 +58,14 @@ extension Data: _AppendableCollection {}
 extension Dictionary: _AppendableCollection {
     @inlinable
     public init(_ element: Element) {
-        self.init(uniqueKeysWithValues: CollectionOfOne((element.key, element.value)))
+        self = [element.key: element.value]
     }
 
     @inlinable
     public mutating func _append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
-        self.merge(newElements.lazy.map { ($0, $1) }, uniquingKeysWith: { old, new in new })
+        for element in newElements {
+            self[element.key] = element.value
+        }
     }
 }
 
