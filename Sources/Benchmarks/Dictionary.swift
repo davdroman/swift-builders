@@ -1,10 +1,10 @@
+import Benchmark
 import Builders
 import Utils
-import XCTest
 
-final class DictionaryBuilderTests: XCTestCase {
-    func testBuilder_anyValues() {
-        let sut = [String: Any].build {
+let dictionary = BenchmarkSuite(name: "") {
+    $0.benchmark("Dictionary<String, Any>.build") {
+        _ = [String: Any].build {
             if true {
                 ["a": false]
             }
@@ -22,17 +22,9 @@ final class DictionaryBuilderTests: XCTestCase {
                 ("f", i)
             }
         }
-        XCTAssertEqual(sut.count, 4)
-        XCTAssertEqual(sut["a"] as? Bool, false)
-        XCTAssertEqual(sut["b"] as? String, "xyz")
-        XCTAssertNil(sut["c"])
-        XCTAssertNil(sut["d"])
-        XCTAssertEqual(sut["e"] as? String, "overriden")
-        XCTAssertEqual(sut["f"] as? Int, 3)
     }
-
-    func testBuilder_doubleValues() {
-        let sut = [String: Double].build {
+    $0.benchmark("Dictionary<String, Double>.build") {
+        _ = [String: Double].build {
             if true {
                 ["a": 2]
             }
@@ -50,17 +42,9 @@ final class DictionaryBuilderTests: XCTestCase {
                 ("f", Double(i))
             }
         }
-        XCTAssertEqual(sut.count, 4)
-        XCTAssertEqual(sut["a"], 2)
-        XCTAssertEqual(sut["b"], 523)
-        XCTAssertNil(sut["c"])
-        XCTAssertNil(sut["d"])
-        XCTAssertEqual(sut["e"], 12)
-        XCTAssertEqual(sut["f"], 3)
     }
-
-    func testBuilder_optionalDoubleValues() {
-        let sut = [String: Double?].build {
+    $0.benchmark("Dictionary<String, Double?>.build") {
+        _ = [String: Double?].build {
             if true {
                 ["a": 2]
             }
@@ -78,12 +62,5 @@ final class DictionaryBuilderTests: XCTestCase {
             }
             ["f": nil]
         }
-        XCTAssertEqual(sut.count, 4)
-        XCTAssertEqual(sut["a"], 2)
-        XCTAssertEqual(sut["b"], 523)
-        XCTAssertEqual(sut["c"], Double??.none)
-        XCTAssertEqual(sut["d"], Double??.none)
-        XCTAssertEqual(sut["e"], Double?.none)
-        XCTAssertEqual(sut["f"], Double?.none)
     }
 }

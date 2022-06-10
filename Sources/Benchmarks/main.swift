@@ -5,6 +5,7 @@ let suites = [
     arraySlice,
     contiguousArray,
     data,
+    dictionary,
     slice,
     string,
     stringUnicodeScalar,
