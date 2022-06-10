@@ -1,5 +1,5 @@
 @resultBuilder
-public struct RangeReplaceableCollectionBuilder<Collection: RangeReplaceableCollection> {
+public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     public typealias Element = Collection.Element
 
     #if compiler(>=5.7)
@@ -10,18 +10,20 @@ public struct RangeReplaceableCollectionBuilder<Collection: RangeReplaceableColl
 
     @inlinable
     public static func buildPartialBlock(accumulated: Collection, next: Collection) -> Collection {
-        accumulated + next
+        var accumulated = accumulated
+        accumulated._append(contentsOf: next)
+        return accumulated
     }
     #else
     @inlinable
     public static func buildBlock(_ components: Collection...) -> Collection {
-        components.reduce(Collection(), +)
+        components.reduce(into: Collection()) { $0._append(contentsOf: $1) }
     }
     #endif
 
     @inlinable
     public static func buildArray(_ components: [Collection]) -> Collection {
-        components.reduce(Collection(), +)
+        components.reduce(into: Collection()) { $0._append(contentsOf: $1) }
     }
 
     @inlinable
@@ -36,7 +38,7 @@ public struct RangeReplaceableCollectionBuilder<Collection: RangeReplaceableColl
 
     @inlinable
     public static func buildExpression(_ element: Element) -> Collection {
-        Collection(repeating: element, count: 1)
+        Collection(element)
     }
 
     @inlinable
@@ -55,8 +57,8 @@ public struct RangeReplaceableCollectionBuilder<Collection: RangeReplaceableColl
     }
 }
 
-extension RangeReplaceableCollection {
-    public typealias Builder = RangeReplaceableCollectionBuilder<Self>
+extension _AppendableCollection {
+    public typealias Builder = _AppendableCollectionBuilder<Self>
 
     @inlinable
     public static func build(@Builder _ build: () -> Self) -> Self {
