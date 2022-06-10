@@ -3,7 +3,7 @@ import Utils
 import XCTest
 
 final class ArrayBuilderTests: XCTestCase {
-    func testBuilder() {
+    func testBuilder_arrayOfAny() {
         let sut = [Any].build {
             if true {
                 1
@@ -31,7 +31,7 @@ final class ArrayBuilderTests: XCTestCase {
         XCTAssertEqual(sut[6] as? String, "1")
     }
 
-    func testBuilder_arrayOfNonOptionals() {
+    func testBuilder_arrayOfInt() {
         let sut = [Int].build {
             [420, 69]
             if `false` {
@@ -57,7 +57,7 @@ final class ArrayBuilderTests: XCTestCase {
         ])
     }
 
-    func testBuilder_arrayOfOptionals() {
+    func testBuilder_arrayOfOptional() {
         let sut = [Int?].build {
             [420, 69]
             if `false` {
