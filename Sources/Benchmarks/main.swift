@@ -4,6 +4,7 @@ let suites = [
     array,
     arraySlice,
     contiguousArray,
+    data,
     slice,
     string,
     stringUnicodeScalar,
