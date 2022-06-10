@@ -1,4 +1,5 @@
 import Bob
+import Utils
 import XCTest
 
 final class DictionaryBuilderTests: XCTestCase {

@@ -10,12 +10,18 @@ let package = Package(
     ],
     targets: [
         .target(name: "Bob"),
-        .testTarget(name: "BobTests", dependencies: ["Bob"]),
+        .testTarget(name: "BobTests", dependencies: [
+            .target(name: "Bob"),
+            .target(name: "Utils"),
+        ]),
 
         .executableTarget(name: "Benchmarks", dependencies: [
             .target(name: "Bob"),
             .product(name: "Benchmark", package: "swift-benchmark"),
+            .target(name: "Utils"),
         ]),
+
+        .target(name: "Utils"),
     ]
 )
 

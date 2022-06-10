@@ -1,9 +1,6 @@
 import Benchmark
 import Bob
-
-/// Used to avoid triggering compiler warnings due to
-/// obviously inaccessible codepaths.
-let `false`: Bool = false
+import Utils
 
 benchmark("build [Any]") {
     _ = [Any].build {
