@@ -9,8 +9,10 @@ let suites = [
     set,
     slice,
     string,
+    stringUTF8View,
     stringUnicodeScalar,
     substring,
+    substringUTF8View,
     substringUnicodeScalar,
 ]
 
