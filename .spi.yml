@@ -1,0 +1,11 @@
+version: 1
+builder:
+  configs:
+  - platform: ios
+    scheme: Builders
+  - platform: macos-xcodebuild
+    scheme: Builders
+  - platform: tvos
+    scheme: Builders
+  - platform: watchos
+    scheme: Builders
