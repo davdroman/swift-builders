@@ -30,18 +30,13 @@ public protocol _EmptyInitializable {
 
 public protocol _AppendableCollection: Collection, _EmptyInitializable {
     init(_ element: Element)
-    mutating func _append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element
+    mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element
 }
 
 extension RangeReplaceableCollection {
     @inlinable
     public init(_ element: Element) {
         self.init(repeating: element, count: 1)
-    }
-
-    @inlinable
-    public mutating func _append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
-        self.append(contentsOf: newElements)
     }
 }
 
@@ -62,7 +57,7 @@ extension Dictionary: _AppendableCollection {
     }
 
     @inlinable
-    public mutating func _append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
+    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
         for element in newElements {
             self[element.key] = element.value
         }
@@ -76,7 +71,7 @@ extension Set: _AppendableCollection {
     }
 
     @inlinable
-    public mutating func _append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
+    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
         self.formUnion(newElements)
     }
 }
@@ -96,11 +91,11 @@ extension String.UTF8View: _AppendableCollection {
     @inlinable
     public init(_ element: Element) {
         self.init()
-        self._append(contentsOf: CollectionOfOne(element))
+        self.append(contentsOf: CollectionOfOne(element))
     }
 
     @inlinable
-    public mutating func _append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
+    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
         var result = String(self)
         switch newElements {
         case let newElements as String.UTF8View:
@@ -125,11 +120,11 @@ extension Substring.UTF8View: _AppendableCollection {
     @inlinable
     public init(_ element: Element) {
         self.init()
-        self._append(contentsOf: CollectionOfOne(element))
+        self.append(contentsOf: CollectionOfOne(element))
     }
 
     @inlinable
-    public mutating func _append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
+    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
         var result = Substring(self)
         switch newElements {
         case let newElements as Substring.UTF8View:

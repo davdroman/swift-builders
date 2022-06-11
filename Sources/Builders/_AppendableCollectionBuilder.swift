@@ -11,19 +11,19 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     @inlinable
     public static func buildPartialBlock(accumulated: Collection, next: Collection) -> Collection {
         var accumulated = accumulated
-        accumulated._append(contentsOf: next)
+        accumulated.append(contentsOf: next)
         return accumulated
     }
     #else
     @inlinable
     public static func buildBlock(_ components: Collection...) -> Collection {
-        components.reduce(into: Collection()) { $0._append(contentsOf: $1) }
+        components.reduce(into: Collection()) { $0.append(contentsOf: $1) }
     }
     #endif
 
     @inlinable
     public static func buildArray(_ components: [Collection]) -> Collection {
-        components.reduce(into: Collection()) { $0._append(contentsOf: $1) }
+        components.reduce(into: Collection()) { $0.append(contentsOf: $1) }
     }
 
     @inlinable
