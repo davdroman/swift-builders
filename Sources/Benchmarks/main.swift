@@ -9,11 +9,11 @@ let suites = [
     set,
     slice,
     string,
-    stringUTF8View,
     stringUnicodeScalar,
+    stringUTF8View,
     substring,
-    substringUTF8View,
     substringUnicodeScalar,
+    substringUTF8View,
 ]
 
 Benchmark.main(suites)

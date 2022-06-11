@@ -85,6 +85,8 @@ extension Slice: _AppendableCollection, _EmptyInitializable where Base: RangeRep
 
 extension String: _AppendableCollection {}
 
+extension String.UnicodeScalarView: _AppendableCollection {}
+
 extension String.UTF8View: _AppendableCollection {
     @inlinable
     public init() {
@@ -110,9 +112,9 @@ extension String.UTF8View: _AppendableCollection {
     }
 }
 
-extension String.UnicodeScalarView: _AppendableCollection {}
-
 extension Substring: _AppendableCollection {}
+
+extension Substring.UnicodeScalarView: _AppendableCollection {}
 
 extension Substring.UTF8View: _AppendableCollection {
     @inlinable
@@ -138,5 +140,3 @@ extension Substring.UTF8View: _AppendableCollection {
         self = result.utf8
     }
 }
-
-extension Substring.UnicodeScalarView: _AppendableCollection {}
