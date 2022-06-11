@@ -72,8 +72,7 @@ extension Dictionary: _AppendableCollection {
 extension Set: _AppendableCollection {
     @inlinable
     public init(_ element: Element) {
-        self.init(minimumCapacity: 1)
-        self.insert(element)
+        self = [element]
     }
 
     @inlinable
