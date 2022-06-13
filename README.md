@@ -39,6 +39,8 @@ Swift Builders enables result builder syntax for most `Collection` types in Swif
 For example, by leveraging `Dictionary.build`, our use case above becomes:
 
 ```swift
+import Builders
+
 func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: String?) -> [String: String] {
     return [String: String].build {
         ["success": didSucceed ? "true" : "false"]
@@ -59,6 +61,8 @@ func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: S
 We can even annotate our function with the `@DictionaryBuilder` attribute to make the function body behave like the builder body itself (think `@ViewBuilder`):
 
 ```swift
+import Builders
+
 @DictionaryBuilder<String, String>
 func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: String?) -> [String: String] {
     ["success": didSucceed ? "true" : "false"]
