@@ -4,7 +4,94 @@ A collection of useful result builders for Swift and Foundation value types.
 
 ## Motivation
 
+Arrays, dictionaries, and other collection-based types in Swift are relatively simple to construct and mutate.
+
+However, things get tricky when the contained elements depend on certain conditions or awkward logic. A prime example of this is constructing a payload to send to an analytics service. The resulting code looks something like this:
+
+```swift
+func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: String?) -> [String: String] {
+    var event: [String: String] = [:]
+    event["success"] = didSucceed ? "true" : "false"
+    if purchaseAmount > 0 {
+        event["amount"] = purchaseAmount.formatted(.number.precision(.fractionLength(2)))
+    } else {
+        event["isFree"] = "true"
+    }
+    if let userId = userId {
+        event["userId"] = userId
+    } else {
+        event["isGuest"] = "true"
+    }
+    return event
+}
+```
+
+It's not bad, but it's definitely not as Swift-y as one would expect.
+
+We're sprinkling imperative code in what should just be a description of our payload. Not only does this make it harder to reason about at a glance, but it also leaves too much leeway for unintended mutations due to using a mutable variable for the entire result value.
+
+Thankfully, **Swift Builders** offers a better solution.
+
 ## Getting started
+
+Swift Builders adds support for result builder syntax for most `Collection` types in Swift and Foundation.
+
+For example, by leveraging `Dictionary.build`, our use case above becomes:
+
+```swift
+func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: String?) -> [String: String] {
+    return [String: String].build {
+        ["success": didSucceed ? "true" : "false"]
+        if purchaseAmount > 0 {
+            ["amount": purchaseAmount.formatted(.number.precision(.fractionLength(2)))]
+        } else {
+            ["isFree": "true"]
+        }
+        if let userId = userId {
+            ["userId": userId]
+        } else {
+            ["isGuest": "true"]
+        }
+    }
+}
+```
+
+We can even annotate our function with the `@DictionaryBuilder` attribute to make the function body behave like the builder body itself (just like `@ViewBuilder`):
+
+```swift
+@DictionaryBuilder<String, String>
+func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: String?) -> [String: String] {
+    ["success": didSucceed ? "true" : "false"]
+    if purchaseAmount > 0 {
+        ["amount": purchaseAmount.formatted(.number.precision(.fractionLength(2)))]
+    } else {
+        ["isFree": "true"]
+    }
+    if let userId = userId {
+        ["userId": userId]
+    } else {
+        ["isGuest": "true"]
+    }
+}
+```
+
+This is only a small demonstration of the power of result builders applied to Swift's native types.
+
+The library offers a range of builders out of the box:
+
+- `ArrayBuilder`
+- `ArraySliceBuilder`
+- `ContiguousArrayBuilder`
+- `DataBuilder`
+- `DictionaryBuilder`
+- `SetBuilder`
+- `SliceBuilder`
+- `StringBuilder`
+- `StringUTF8ViewBuilder`
+- `StringUnicodeScalarViewBuilder`
+- `SubstringBuilder`
+- `SubstringUTF8ViewBuilder`
+- `SubstringUnicodeScalarViewBuilder`
 
 ## Benchmarks
 
