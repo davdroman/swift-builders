@@ -12,7 +12,7 @@ public typealias ContiguousArrayBuilder<Element> = ContiguousArray<Element>.Buil
 public typealias DataBuilder = Data.Builder
 #endif
 
-public typealias DictionaryBuilder<Key: Hashable, Value> = Dictionary<Key, Value>
+public typealias DictionaryBuilder<Key: Hashable, Value> = Dictionary<Key, Value>.Builder
 
 public typealias SetBuilder<Element: Hashable> = Set<Element>.Builder
 
