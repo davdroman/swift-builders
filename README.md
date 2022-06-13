@@ -6,7 +6,7 @@ A collection of useful result builders for Swift and Foundation value types.
 
 Arrays, dictionaries, and other collection-based types in Swift are relatively simple to construct and mutate.
 
-However, things get tricky when the contained elements depend on certain conditions or awkward logic. A prime example of this is constructing a payload to send to an analytics service. The resulting code looks something like this:
+However, things get tricky when the contained elements depend on certain conditions or awkward logic. A prime example of this is constructing a payload to send to an analytics service. The resulting code might look like this:
 
 ```swift
 func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: String?) -> [String: String] {
@@ -26,15 +26,15 @@ func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: S
 }
 ```
 
-It's not bad, but it's definitely not as Swift-y as one would expect.
+It's not bad, but it's definitely not as Swifty as one would expect.
 
-We're sprinkling imperative code in what should just be a description of our payload. Not only does this make it harder to reason about at a glance, but it also leaves too much leeway for unintended mutations due to using a mutable variable for the entire result value.
+We're sprinkling imperative code on what should just be a description of our payload. Not only does this make it harder to reason about the code at a glance, but it also leaves too much leeway for unintended mutations.
 
-Thankfully, **Swift Builders** offers a better solution.
+Thankfully, this library offers a better solution.
 
 ## Getting started
 
-Swift Builders adds support for result builder syntax for most `Collection` types in Swift and Foundation.
+Swift Builders enables result builder syntax for most `Collection` types in Swift and Foundation.
 
 For example, by leveraging `Dictionary.build`, our use case above becomes:
 
@@ -56,7 +56,7 @@ func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: S
 }
 ```
 
-We can even annotate our function with the `@DictionaryBuilder` attribute to make the function body behave like the builder body itself (just like `@ViewBuilder`):
+We can even annotate our function with the `@DictionaryBuilder` attribute to make the function body behave like the builder body itself (think `@ViewBuilder`):
 
 ```swift
 @DictionaryBuilder<String, String>
@@ -77,7 +77,7 @@ func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: S
 
 This is only a small demonstration of the power of result builders applied to Swift's native types.
 
-The library offers a range of builders out of the box:
+The library offers a variety of builders out of the box:
 
 - `ArrayBuilder`
 - `ArraySliceBuilder`
