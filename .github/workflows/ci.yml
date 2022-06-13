@@ -19,7 +19,7 @@ jobs:
     name: ${{ matrix.platform }} (Swift ${{ matrix.swift }})
     runs-on: ${{ matrix.os }}
     strategy:
-      # fail-fast: false
+      fail-fast: false
       matrix:
         os:
           - macos-12
