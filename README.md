@@ -32,7 +32,7 @@ It's not bad, but it's definitely not as Swifty as one would expect.
 
 We're sprinkling imperative code on what should just be a description of our payload. Not only does this make it harder to reason about the code at a glance, but it also leaves too much leeway for unintended mutations.
 
-Thankfully, this library offers a better solution.
+Thankfully, there's a better way...
 
 ## Getting started
 
