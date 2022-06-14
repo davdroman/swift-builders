@@ -1,6 +1,8 @@
 # Swift Builders
 
 [![CI](https://github.com/davdroman/swift-builders/actions/workflows/ci.yml/badge.svg)](https://github.com/davdroman/swift-builders/actions/workflows/ci.yml)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdavdroman%2Fswift-builders%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/davdroman/swift-builders)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdavdroman%2Fswift-builders%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/davdroman/swift-builders)
 
 A collection of useful result builders for Swift and Foundation value types.
 
