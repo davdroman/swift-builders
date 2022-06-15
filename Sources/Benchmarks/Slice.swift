@@ -1,6 +1,6 @@
 import Benchmark
 import Builders
-import Utils
+import BuildersTestSupport
 
 let slice = BenchmarkSuite(name: "") {
     $0.benchmark("Slice<Array<Any>>.build") {

@@ -7,21 +7,22 @@ let package = Package(
     name: "swift-builders",
     products: [
         .library(name: "Builders", targets: ["Builders"]),
+        .library(name: "BuildersTestSupport", targets: ["BuildersTestSupport"]),
     ],
     targets: [
         .target(name: "Builders"),
         .testTarget(name: "BuildersTests", dependencies: [
             .target(name: "Builders"),
-            .target(name: "Utils"),
+            .target(name: "BuildersTestSupport"),
         ]),
+
+        .target(name: "BuildersTestSupport"),
 
         .executableTarget(name: "Benchmarks", dependencies: [
-            .target(name: "Builders"),
             .product(name: "Benchmark", package: "Benchmark"),
-            .target(name: "Utils"),
+            .target(name: "Builders"),
+            .target(name: "BuildersTestSupport"),
         ]),
-
-        .target(name: "Utils"),
     ]
 )
 

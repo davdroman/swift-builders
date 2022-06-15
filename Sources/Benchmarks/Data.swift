@@ -1,7 +1,7 @@
 import Benchmark
 import Builders
+import BuildersTestSupport
 import Foundation
-import Utils
 
 let data = BenchmarkSuite(name: "") {
     $0.benchmark("Data.build") {

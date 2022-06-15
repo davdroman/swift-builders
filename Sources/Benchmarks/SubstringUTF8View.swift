@@ -1,6 +1,6 @@
 import Benchmark
 import Builders
-import Utils
+import BuildersTestSupport
 
 let substringUTF8View = BenchmarkSuite(name: "") {
     $0.benchmark("Substring.UTF8View.build") {

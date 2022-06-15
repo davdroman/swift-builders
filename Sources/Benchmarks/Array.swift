@@ -1,6 +1,6 @@
 import Benchmark
 import Builders
-import Utils
+import BuildersTestSupport
 
 let array = BenchmarkSuite(name: "") {
     $0.benchmark("Array<Any>.build") {

@@ -1,5 +1,5 @@
 import Builders
-import Utils
+import BuildersTestSupport
 import XCTest
 
 final class SubstringUnicodeScalarBuilderTests: XCTestCase {
