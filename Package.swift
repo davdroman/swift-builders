@@ -1,4 +1,4 @@
-// swift-tools-version: 5.4
+// swift-tools-version: 5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -19,7 +19,7 @@ let package = Package(
         .target(name: "BuildersTestSupport"),
 
         .executableTarget(name: "Benchmarks", dependencies: [
-            .product(name: "Benchmark", package: "Benchmark"),
+            .product(name: "Benchmark", package: "swift-benchmark"),
             .target(name: "Builders"),
             .target(name: "BuildersTestSupport"),
         ]),
@@ -27,5 +27,5 @@ let package = Package(
 )
 
 package.dependencies = [
-    .package(name: "Benchmark", url: "https://github.com/google/swift-benchmark", from: "0.1.2"),
+    .package(url: "https://github.com/google/swift-benchmark", from: "0.1.2"),
 ]
