@@ -2,7 +2,7 @@
 public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     public typealias Element = Collection.Element
 
-    #if compiler(>=5.7)
+    #if swift(>=5.7)
     @inlinable
     public static func buildPartialBlock(first: Collection) -> Collection {
         first
