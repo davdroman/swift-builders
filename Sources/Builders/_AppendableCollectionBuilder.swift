@@ -15,7 +15,6 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
         return accumulated
     }
     #else
-    @inlinable
     public static func buildBlock(_ components: Collection...) -> Collection {
         components.reduce(into: Collection()) { $0.append(contentsOf: $1) }
     }
