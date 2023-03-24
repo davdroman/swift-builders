@@ -25,15 +25,18 @@ import Foundation
 #endif
 
 public protocol _EmptyInitializable {
+    @_spi(Internals)
     init()
 }
 
 public protocol _AppendableCollection: Collection, _EmptyInitializable {
+    @_spi(Internals)
     init(_ element: Element)
     mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element
 }
 
 extension RangeReplaceableCollection {
+    @_spi(Internals)
     @inlinable
     public init(_ element: Element) {
         self.init(repeating: element, count: 1)
@@ -51,6 +54,7 @@ extension Data: _AppendableCollection {}
 #endif
 
 extension Dictionary: _AppendableCollection {
+    @_spi(Internals)
     @inlinable
     public init(_ element: Element) {
         self = [element.key: element.value]
@@ -65,6 +69,7 @@ extension Dictionary: _AppendableCollection {
 }
 
 extension Set: _AppendableCollection {
+    @_spi(Internals)
     @inlinable
     public init(_ element: Element) {
         self = [element]
@@ -83,11 +88,13 @@ extension String: _AppendableCollection {}
 extension String.UnicodeScalarView: _AppendableCollection {}
 
 extension String.UTF8View: _AppendableCollection {
+    @_spi(Internals)
     @inlinable
     public init() {
         self = String().utf8
     }
 
+    @_spi(Internals)
     @inlinable
     public init(_ element: Element) {
         self.init()
@@ -112,11 +119,13 @@ extension Substring: _AppendableCollection {}
 extension Substring.UnicodeScalarView: _AppendableCollection {}
 
 extension Substring.UTF8View: _AppendableCollection {
+    @_spi(Internals)
     @inlinable
     public init() {
         self = Substring().utf8
     }
 
+    @_spi(Internals)
     @inlinable
     public init(_ element: Element) {
         self.init()

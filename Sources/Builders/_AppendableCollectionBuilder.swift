@@ -2,7 +2,7 @@
 public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     public typealias Element = Collection.Element
 
-    #if compiler(>=5.7)
+    #if swift(>=5.7)
     @inlinable
     public static func buildPartialBlock(first: Collection) -> Collection {
         first
@@ -15,13 +15,11 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
         return accumulated
     }
     #else
-    @inlinable
     public static func buildBlock(_ components: Collection...) -> Collection {
         components.reduce(into: Collection()) { $0.append(contentsOf: $1) }
     }
     #endif
 
-    @inlinable
     public static func buildArray(_ components: [Collection]) -> Collection {
         components.reduce(into: Collection()) { $0.append(contentsOf: $1) }
     }
@@ -36,7 +34,6 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
         component
     }
 
-    @inlinable
     public static func buildExpression(_ element: Element) -> Collection {
         Collection(element)
     }
@@ -51,7 +48,6 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
         component
     }
 
-    @inlinable
     public static func buildOptional(_ component: Collection?) -> Collection {
         component ?? Collection()
     }
