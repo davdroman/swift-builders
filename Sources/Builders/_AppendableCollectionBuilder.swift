@@ -21,7 +21,6 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     }
     #endif
 
-    @inlinable
     public static func buildArray(_ components: [Collection]) -> Collection {
         components.reduce(into: Collection()) { $0.append(contentsOf: $1) }
     }
@@ -36,7 +35,6 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
         component
     }
 
-    @inlinable
     public static func buildExpression(_ element: Element) -> Collection {
         Collection(element)
     }
@@ -51,7 +49,6 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
         component
     }
 
-    @inlinable
     public static func buildOptional(_ component: Collection?) -> Collection {
         component ?? Collection()
     }
