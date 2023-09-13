@@ -1,46 +1,12 @@
-// MIT License
-//
-// Copyright (c) 2017 Point-Free
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
 #if canImport(Foundation)
 import Foundation
 #endif
 
-public protocol _EmptyInitializable {
+public protocol _AppendableCollection: Collection {
     @_spi(Internals)
-    init()
-}
-
-public protocol _AppendableCollection: Collection, _EmptyInitializable {
+    init(_ elements: some Sequence<Element>)
     @_spi(Internals)
-    init(_ element: Element)
-    mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element
-}
-
-extension RangeReplaceableCollection {
-    @_spi(Internals)
-    @inlinable
-    public init(_ element: Element) {
-        self.init(repeating: element, count: 1)
-    }
+    mutating func append(contentsOf newElements: some Sequence<Element>)
 }
 
 extension Array: _AppendableCollection {}
@@ -55,13 +21,12 @@ extension Data: _AppendableCollection {}
 
 extension Dictionary: _AppendableCollection {
     @_spi(Internals)
-    @inlinable
-    public init(_ element: Element) {
-        self = [element.key: element.value]
+    public init(_ elements: some Sequence<Element>) {
+        self.init(elements.lazy.map({ ($0.key, $0.value) }), uniquingKeysWith: { $1 })
     }
 
-    @inlinable
-    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
+    @_spi(Internals)
+    public mutating func append(contentsOf newElements: some Sequence<Element>) {
         for element in newElements {
             self[element.key] = element.value
         }
@@ -70,18 +35,12 @@ extension Dictionary: _AppendableCollection {
 
 extension Set: _AppendableCollection {
     @_spi(Internals)
-    @inlinable
-    public init(_ element: Element) {
-        self = [element]
-    }
-
-    @inlinable
-    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
+    public mutating func append(contentsOf newElements: some Sequence<Element>) {
         self.formUnion(newElements)
     }
 }
 
-extension Slice: _AppendableCollection, _EmptyInitializable where Base: RangeReplaceableCollection {}
+extension Slice: _AppendableCollection where Base: RangeReplaceableCollection {}
 
 extension String: _AppendableCollection {}
 
@@ -89,20 +48,14 @@ extension String.UnicodeScalarView: _AppendableCollection {}
 
 extension String.UTF8View: _AppendableCollection {
     @_spi(Internals)
-    @inlinable
-    public init() {
-        self = String().utf8
+    public init(_ elements: some Sequence<Element>) {
+        var result = String().utf8
+        result.append(contentsOf: elements)
+        self = result
     }
 
     @_spi(Internals)
-    @inlinable
-    public init(_ element: Element) {
-        self.init()
-        self.append(contentsOf: CollectionOfOne(element))
-    }
-
-    @inlinable
-    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
+    public mutating func append(contentsOf newElements: some Sequence<Element>) {
         var result = String(self)
         switch newElements {
         case let newElements as String.UTF8View:
@@ -120,20 +73,14 @@ extension Substring.UnicodeScalarView: _AppendableCollection {}
 
 extension Substring.UTF8View: _AppendableCollection {
     @_spi(Internals)
-    @inlinable
-    public init() {
-        self = Substring().utf8
+    public init(_ elements: some Sequence<Element>) {
+        var result = Substring().utf8
+        result.append(contentsOf: elements)
+        self = result
     }
 
     @_spi(Internals)
-    @inlinable
-    public init(_ element: Element) {
-        self.init()
-        self.append(contentsOf: CollectionOfOne(element))
-    }
-
-    @inlinable
-    public mutating func append<S: Sequence>(contentsOf newElements: S) where S.Element == Self.Element {
+    public mutating func append(contentsOf newElements: some Sequence<Element>) {
         var result = Substring(self)
         switch newElements {
         case let newElements as Substring.UTF8View:

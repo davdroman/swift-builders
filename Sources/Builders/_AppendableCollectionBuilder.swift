@@ -7,7 +7,6 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
         first
     }
 
-    @inlinable
     public static func buildPartialBlock(accumulated: Collection, next: Collection) -> Collection {
         var accumulated = accumulated
         accumulated.append(contentsOf: next)
@@ -15,7 +14,7 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     }
 
     public static func buildArray(_ components: [Collection]) -> Collection {
-        components.reduce(into: Collection()) { $0.append(contentsOf: $1) }
+        Collection(components.lazy.joined())
     }
 
     @inlinable
@@ -29,7 +28,7 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     }
 
     public static func buildExpression(_ element: Element) -> Collection {
-        Collection(element)
+        Collection(CollectionOfOne(element))
     }
 
     @inlinable
@@ -43,7 +42,7 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     }
 
     public static func buildOptional(_ component: Collection?) -> Collection {
-        component ?? Collection()
+        component ?? Collection(EmptyCollection())
     }
 }
 
