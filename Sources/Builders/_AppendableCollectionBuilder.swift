@@ -14,7 +14,7 @@ public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
     }
 
     public static func buildArray(_ components: [Collection]) -> Collection {
-        Collection(components.lazy.joined())
+        Collection(components.joined())
     }
 
     @inlinable
