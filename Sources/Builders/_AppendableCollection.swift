@@ -5,7 +5,6 @@ import Foundation
 public protocol _AppendableCollection: Collection {
     @_spi(Internals)
     init(_ elements: some Sequence<Element>)
-    @_spi(Internals)
     mutating func append(contentsOf newElements: some Sequence<Element>)
 }
 
@@ -25,7 +24,6 @@ extension Dictionary: _AppendableCollection {
         self.init(elements.lazy.map({ ($0.key, $0.value) }), uniquingKeysWith: { $1 })
     }
 
-    @_spi(Internals)
     public mutating func append(contentsOf newElements: some Sequence<Element>) {
         for element in newElements {
             self[element.key] = element.value
@@ -34,7 +32,6 @@ extension Dictionary: _AppendableCollection {
 }
 
 extension Set: _AppendableCollection {
-    @_spi(Internals)
     public mutating func append(contentsOf newElements: some Sequence<Element>) {
         self.formUnion(newElements)
     }
@@ -54,7 +51,6 @@ extension String.UTF8View: _AppendableCollection {
         self = result
     }
 
-    @_spi(Internals)
     public mutating func append(contentsOf newElements: some Sequence<Element>) {
         var result = String(self)
         switch newElements {
@@ -79,7 +75,6 @@ extension Substring.UTF8View: _AppendableCollection {
         self = result
     }
 
-    @_spi(Internals)
     public mutating func append(contentsOf newElements: some Sequence<Element>) {
         var result = Substring(self)
         switch newElements {
