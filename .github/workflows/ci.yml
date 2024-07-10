@@ -8,7 +8,7 @@ on:
     branches:
       - "**"
   schedule:
-    - cron: '3 3 * * 2'  # 3:03 AM, every Tuesday
+    - cron: "3 3 * * 2" # 3:03 AM, every Tuesday
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -27,16 +27,13 @@ jobs:
           - tvOS
           - watchOS
         swift:
-          - 5.7
-          - 5.8
           - 5.9
+          - 6.0
         include:
-          - swift: 5.7
-            os: macos-13
-          - swift: 5.8
-            os: macos-13
           - swift: 5.9
             os: macos-13
+          - swift: 6.0
+            os: macos-14
           - action: test
           - platform: tvOS
             action: build
@@ -57,8 +54,6 @@ jobs:
       fail-fast: false
       matrix:
         swift:
-          - 5.7
-          - 5.8
           - 5.9
     container:
       image: swift:${{ matrix.swift }}
