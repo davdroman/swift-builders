@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class ContiguousArrayBuilderTests: XCTestCase {
+	func testBuilder_emptyArraySlice() {
+		let sut = ContiguousArray<Any>.build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder_arraySliceOfAny() {
 		let sut = ContiguousArray<Any>.build {
 			if true {

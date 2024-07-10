@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class SetBuilderTests: XCTestCase {
+	func testBuilder_emptySet() {
+		let sut = Set<AnyHashable>.build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder_setOfAnyHashable() {
 		let sut = Set<AnyHashable>.build {
 			if true {

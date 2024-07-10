@@ -1,7 +1,11 @@
 @resultBuilder
 public struct _AppendableCollectionBuilder<Collection: _AppendableCollection> {
 	public typealias Element = Collection.Element
-	
+
+	public static func buildBlock() -> Collection {
+		Collection(EmptyCollection())
+	}
+
 	@inlinable
 	public static func buildPartialBlock(first: Collection) -> Collection {
 		first

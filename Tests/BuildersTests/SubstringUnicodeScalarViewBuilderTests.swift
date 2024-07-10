@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class SubstringUnicodeScalarBuilderTests: XCTestCase {
+	func testBuilder_emptySubstringUnicodeScalarView() {
+		let sut = Substring.UnicodeScalarView.build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder() {
 		let sut = Substring.UnicodeScalarView.build {
 			if true {
