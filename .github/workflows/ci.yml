@@ -34,7 +34,7 @@ jobs:
           - swift: "5.9"
             os: macos-13
           - swift: "5.10"
-            os: macos-13
+            os: macos-14
           - swift: "6.0"
             os: macos-14
           - action: test
