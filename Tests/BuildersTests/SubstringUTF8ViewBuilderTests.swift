@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class SubstringUTF8ViewBuilderTests: XCTestCase {
+	func testBuilder_emptySubstringUTF8View() {
+		let sut = Substring.UTF8View.build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder() {
 		let sut = Substring.UTF8View.build {
 			if true {

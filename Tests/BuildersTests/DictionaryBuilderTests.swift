@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class DictionaryBuilderTests: XCTestCase {
+	func testBuilder_emptyDictionary() {
+		let sut = [String: Any].build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder_anyValues() {
 		let sut = [String: Any].build {
 			if true {

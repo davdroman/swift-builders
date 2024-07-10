@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class DataBuilderTests: XCTestCase {
+	func testBuilder_emptyData() {
+		let sut = Data.build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder() {
 		let sut = Data.build {
 			if true {

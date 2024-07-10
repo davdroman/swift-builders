@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class StringBuilderTests: XCTestCase {
+	func testBuilder_emptyString() {
+		let sut = String.build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder() {
 		let sut = String.build {
 			if true {

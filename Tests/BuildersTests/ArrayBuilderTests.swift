@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class ArrayBuilderTests: XCTestCase {
+	func testBuilder_emptyArray() {
+		let sut = [Any].build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder_arrayOfAny() {
 		let sut = [Any].build {
 			if true {

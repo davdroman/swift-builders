@@ -3,6 +3,11 @@ import BuildersTestSupport
 import XCTest
 
 final class ArraySliceBuilderTests: XCTestCase {
+	func testBuilder_emptyArraySlice() {
+		let sut = ArraySlice<Any>.build {}
+		XCTAssertEqual(sut.isEmpty, true)
+	}
+
 	func testBuilder_arraySliceOfAny() {
 		let sut = ArraySlice<Any>.build {
 			if true {
