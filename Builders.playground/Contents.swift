@@ -1,5 +1,5 @@
-import Foundation
 import Builders
+import Foundation
 
 // MARK: ArrayBuilder
 
@@ -21,13 +21,13 @@ extension MailLink {
 
 	@ArrayBuilder<URLQueryItem>
 	var queryItems: [URLQueryItem] {
-		if let cc = cc {
+		if let cc {
 			URLQueryItem(name: "cc", value: cc.joined(separator: ","))
 		}
-		if let subject = subject {
+		if let subject {
 			URLQueryItem(name: "subject", value: subject)
 		}
-		if let body = body {
+		if let body {
 			URLQueryItem(name: "body", value: body)
 		}
 	}
@@ -51,7 +51,7 @@ func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: S
 	} else {
 		["isFree": "true"]
 	}
-	if let userId = userId {
+	if let userId {
 		["userId": userId]
 	} else {
 		["isGuest": "true"]

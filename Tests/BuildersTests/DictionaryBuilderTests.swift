@@ -35,7 +35,7 @@ final class DictionaryBuilderTests: XCTestCase {
 		XCTAssertEqual(sut["e"] as? String, "overriden")
 		XCTAssertEqual(sut["f"] as? Int, 3)
 	}
-	
+
 	func testBuilder_doubleValues() {
 		let sut = [String: Double].build {
 			if true {
@@ -63,7 +63,7 @@ final class DictionaryBuilderTests: XCTestCase {
 		XCTAssertEqual(sut["e"], 12)
 		XCTAssertEqual(sut["f"], 3)
 	}
-	
+
 	func testBuilder_optionalDoubleValues() {
 		let sut = [String: Double?].build {
 			if true {

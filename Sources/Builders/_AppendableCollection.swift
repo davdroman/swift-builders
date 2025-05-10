@@ -21,9 +21,9 @@ extension Data: _AppendableCollection {}
 extension Dictionary: _AppendableCollection {
 	@_spi(Internals)
 	public init(_ elements: some Sequence<Element>) {
-		self.init(elements.lazy.map({ ($0.key, $0.value) }), uniquingKeysWith: { $1 })
+		self.init(elements.lazy.map { ($0.key, $0.value) }, uniquingKeysWith: { $1 })
 	}
-	
+
 	public mutating func append(contentsOf newElements: some Sequence<Element>) {
 		for element in newElements {
 			self[element.key] = element.value
@@ -50,7 +50,7 @@ extension String.UTF8View: _AppendableCollection {
 		result.append(contentsOf: elements)
 		self = result
 	}
-	
+
 	public mutating func append(contentsOf newElements: some Sequence<Element>) {
 		var result = String(self)
 		switch newElements {
@@ -74,7 +74,7 @@ extension Substring.UTF8View: _AppendableCollection {
 		result.append(contentsOf: elements)
 		self = result
 	}
-	
+
 	public mutating func append(contentsOf newElements: some Sequence<Element>) {
 		var result = Substring(self)
 		switch newElements {

@@ -32,10 +32,10 @@ final class SetBuilderTests: XCTestCase {
 			"e",
 			0,
 			2,
-			"1"
+			"1",
 		])
 	}
-	
+
 	func testBuilder_setOfInt() {
 		let sut = Set<Int>.build {
 			[420, 69]
@@ -58,10 +58,10 @@ final class SetBuilderTests: XCTestCase {
 			39,
 			32,
 			21,
-			1
+			1,
 		])
 	}
-	
+
 	func testBuilder_setOfOptional() {
 		let sut = Set<Int?>.build {
 			[420, 69]
@@ -85,7 +85,7 @@ final class SetBuilderTests: XCTestCase {
 			32,
 			21,
 			1,
-			nil
+			nil,
 		])
 	}
 }
