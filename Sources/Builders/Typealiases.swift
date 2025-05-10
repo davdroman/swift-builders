@@ -2,10 +2,6 @@
 import Foundation
 #endif
 
-public typealias ArrayBuilder<Element> = Array<Element>.Builder
-
-public typealias ArraySliceBuilder<Element> = ArraySlice<Element>.Builder
-
 public typealias ContiguousArrayBuilder<Element> = ContiguousArray<Element>.Builder
 
 #if canImport(Foundation)

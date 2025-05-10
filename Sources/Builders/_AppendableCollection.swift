@@ -8,10 +8,6 @@ public protocol _AppendableCollection: Collection {
 	mutating func append(contentsOf newElements: some Sequence<Element>)
 }
 
-extension Array: _AppendableCollection {}
-
-extension ArraySlice: _AppendableCollection {}
-
 extension ContiguousArray: _AppendableCollection {}
 
 #if canImport(Foundation)
