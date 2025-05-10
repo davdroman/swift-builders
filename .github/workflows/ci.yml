@@ -17,7 +17,7 @@ concurrency:
 jobs:
   macOS:
     name: ${{ matrix.platform }} (Swift ${{ matrix.swift }})
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-15
     strategy:
       fail-fast: false
       matrix:
@@ -27,16 +27,10 @@ jobs:
           - tvOS
           - watchOS
         swift:
-          - "5.9"
           - "5.10"
           - "6.0"
+          - "6.1"
         include:
-          - swift: "5.9"
-            os: macos-13
-          - swift: "5.10"
-            os: macos-14
-          - swift: "6.0"
-            os: macos-14
           - action: test
           - platform: tvOS
             action: build
@@ -44,11 +38,12 @@ jobs:
             action: build
     steps:
       - uses: actions/checkout@v4
-      - uses: mxcl/xcodebuild@v2
+      - uses: mxcl/xcodebuild@v3
         with:
           action: ${{ matrix.action }}
           platform: ${{ matrix.platform }}
           swift: ~${{ matrix.swift }}
+          workspace: Builders.xcworkspace
           scheme: Builders
   linux:
     name: Linux (Swift ${{ matrix.swift }})
@@ -57,8 +52,9 @@ jobs:
       fail-fast: false
       matrix:
         swift:
-          - "5.9"
           - "5.10"
+          - "6.0"
+          - "6.1"
     container:
       image: swift:${{ matrix.swift }}
     steps:
