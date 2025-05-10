@@ -1,13 +1,3 @@
-#if canImport(Foundation)
-import Foundation
-#endif
-
-public typealias ContiguousArrayBuilder<Element> = ContiguousArray<Element>.Builder
-
-#if canImport(Foundation)
-public typealias DataBuilder = Data.Builder
-#endif
-
 public typealias DictionaryBuilder<Key: Hashable, Value> = Dictionary<Key, Value>.Builder
 
 public typealias SetBuilder<Element: Hashable> = Set<Element>.Builder
