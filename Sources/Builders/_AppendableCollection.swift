@@ -1,17 +1,7 @@
-#if canImport(Foundation)
-import Foundation
-#endif
-
 public protocol _AppendableCollection: Collection {
 	@_spi(Internals)
 	init(_ elements: some Sequence<Element>)
 	mutating func append(contentsOf newElements: some Sequence<Element>)
-}
-
-extension Set: _AppendableCollection {
-	public mutating func append(contentsOf newElements: some Sequence<Element>) {
-		self.formUnion(newElements)
-	}
 }
 
 extension Slice: _AppendableCollection where Base: RangeReplaceableCollection {}

@@ -1,5 +1,3 @@
-public typealias SetBuilder<Element: Hashable> = Set<Element>.Builder
-
 public typealias SliceBuilder<Base: RangeReplaceableCollection> = Slice<Base>.Builder
 
 public typealias StringBuilder = String.Builder
