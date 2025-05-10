@@ -4,12 +4,12 @@ import XCTest
 
 final class SliceBuilderTests: XCTestCase {
 	func testBuilder_emptyArraySlice() {
-		let sut = Slice<Array<Any>>.build {}
+		let sut = Slice<[Any]>.build {}
 		XCTAssertEqual(sut.isEmpty, true)
 	}
 
 	func testBuilder_arraySliceOfAny() {
-		let sut = Slice<Array<Any>>.build {
+		let sut = Slice<[Any]>.build {
 			if true {
 				1
 			}
@@ -35,9 +35,9 @@ final class SliceBuilderTests: XCTestCase {
 		XCTAssertEqual(sut[5] as? String, "2")
 		XCTAssertEqual(sut[6] as? String, "1")
 	}
-	
+
 	func testBuilder_arraySliceOfInt() {
-		let sut = Slice<Array<Int>>.build {
+		let sut = Slice<[Int]>.build {
 			Slice([420, 69])
 			if `false` {
 				Slice([120])
@@ -60,9 +60,9 @@ final class SliceBuilderTests: XCTestCase {
 		XCTAssertEqual(sut[4], 21)
 		XCTAssertEqual(sut[5], 1)
 	}
-	
+
 	func testBuilder_arraySliceOfOptional() {
-		let sut = Slice<Array<Int?>>.build {
+		let sut = Slice<[Int?]>.build {
 			Slice([420, 69])
 			if `false` {
 				Slice([120])

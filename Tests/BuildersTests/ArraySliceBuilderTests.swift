@@ -35,7 +35,7 @@ final class ArraySliceBuilderTests: XCTestCase {
 		XCTAssertEqual(sut[5] as? String, "2")
 		XCTAssertEqual(sut[6] as? String, "1")
 	}
-	
+
 	func testBuilder_arraySliceOfInt() {
 		let sut = ArraySlice<Int>.build {
 			[420, 69]
@@ -58,10 +58,10 @@ final class ArraySliceBuilderTests: XCTestCase {
 			39,
 			32,
 			21,
-			1
+			1,
 		])
 	}
-	
+
 	func testBuilder_arraySliceOfOptional() {
 		let sut = ArraySlice<Int?>.build {
 			[420, 69]
@@ -85,7 +85,7 @@ final class ArraySliceBuilderTests: XCTestCase {
 			32,
 			21,
 			1,
-			nil
+			nil,
 		])
 	}
 }

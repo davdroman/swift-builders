@@ -4,7 +4,7 @@ import BuildersTestSupport
 
 let slice = BenchmarkSuite(name: "") {
 	$0.benchmark("Slice<Array<Any>>.build") {
-		_ = Slice<Array<Any>>.build {
+		_ = Slice<[Any]>.build {
 			if true {
 				1
 			}
@@ -23,7 +23,7 @@ let slice = BenchmarkSuite(name: "") {
 		}
 	}
 	$0.benchmark("Slice<Array<Int>>.build") {
-		_ = Slice<Array<Int>>.build {
+		_ = Slice<[Int]>.build {
 			Slice([420, 69])
 			if `false` {
 				Slice([120])
@@ -40,7 +40,7 @@ let slice = BenchmarkSuite(name: "") {
 		}
 	}
 	$0.benchmark("Slice<Array<Int?>>.build") {
-		_ = Slice<Array<Int?>>.build {
+		_ = Slice<[Int?]>.build {
 			Slice([420, 69])
 			if `false` {
 				Slice([120])

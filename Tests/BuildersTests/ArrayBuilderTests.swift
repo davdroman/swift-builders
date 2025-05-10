@@ -58,7 +58,7 @@ final class ArrayBuilderTests: XCTestCase {
 			39,
 			32,
 			21,
-			1
+			1,
 		])
 	}
 
@@ -85,7 +85,7 @@ final class ArrayBuilderTests: XCTestCase {
 			32,
 			21,
 			1,
-			nil
+			nil,
 		])
 	}
 }

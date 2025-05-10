@@ -27,7 +27,7 @@ extension String.UTF8View: _AppendableCollection {
 		result.append(contentsOf: elements)
 		self = result
 	}
-	
+
 	public mutating func append(contentsOf newElements: some Sequence<Element>) {
 		var result = String(self)
 		switch newElements {
@@ -51,7 +51,7 @@ extension Substring.UTF8View: _AppendableCollection {
 		result.append(contentsOf: elements)
 		self = result
 	}
-	
+
 	public mutating func append(contentsOf newElements: some Sequence<Element>) {
 		var result = Substring(self)
 		switch newElements {
