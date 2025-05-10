@@ -1,5 +1,3 @@
-public typealias DictionaryBuilder<Key: Hashable, Value> = Dictionary<Key, Value>.Builder
-
 public typealias SetBuilder<Element: Hashable> = Set<Element>.Builder
 
 public typealias SliceBuilder<Base: RangeReplaceableCollection> = Slice<Base>.Builder

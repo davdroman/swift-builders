@@ -8,25 +8,6 @@ public protocol _AppendableCollection: Collection {
 	mutating func append(contentsOf newElements: some Sequence<Element>)
 }
 
-extension ContiguousArray: _AppendableCollection {}
-
-#if canImport(Foundation)
-extension Data: _AppendableCollection {}
-#endif
-
-extension Dictionary: _AppendableCollection {
-	@_spi(Internals)
-	public init(_ elements: some Sequence<Element>) {
-		self.init(elements.lazy.map({ ($0.key, $0.value) }), uniquingKeysWith: { $1 })
-	}
-	
-	public mutating func append(contentsOf newElements: some Sequence<Element>) {
-		for element in newElements {
-			self[element.key] = element.value
-		}
-	}
-}
-
 extension Set: _AppendableCollection {
 	public mutating func append(contentsOf newElements: some Sequence<Element>) {
 		self.formUnion(newElements)
