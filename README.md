@@ -108,33 +108,38 @@ MacBook Pro (14-inch, 2021)
 Apple M1 Pro (10 cores, 8 performance and 2 efficiency)
 32 GB Memory
 
+$ swiftc -version
+
+swift-driver version: 1.120.5 Apple Swift version 6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+Target: arm64-apple-macosx15.0
+
 $ swift run -c release Benchmarks
 
-name                              time        std        iterations
--------------------------------------------------------------------
-Array<Any>.build                  1833.000 ns ±   7.60 %     757726
-Array<Int>.build                   542.000 ns ±  15.49 %    1000000
-Array<Int?>.build                  709.000 ns ±   9.51 %    1000000
-ArraySlice<Any>.build             2750.000 ns ±   5.28 %     511759
-ArraySlice<Int>.build              875.000 ns ±   8.40 %    1000000
-ArraySlice<Int?>.build            1167.000 ns ±  13.55 %    1000000
-ContiguousArray<Any>.build        1917.000 ns ±  12.37 %     729365
-ContiguousArray<Int>.build         542.000 ns ±  23.24 %    1000000
-ContiguousArray<Int?>.build        750.000 ns ±  13.97 %    1000000
-Data.build                         875.000 ns ±  13.55 %    1000000
-Dictionary<String, Any>.build     4209.000 ns ±   6.26 %     328025
-Dictionary<String, Double>.build  2459.000 ns ±  11.92 %     562007
-Dictionary<String, Double?>.build 2583.000 ns ±   5.51 %     526636
-Set<Any>.build                    6333.000 ns ±  10.30 %     228224
-Set<Int>.build                     750.000 ns ±  11.22 %    1000000
-Set<Int?>.build                   1292.000 ns ±  11.42 %    1000000
-Slice<Array<Any>>.build           2209.000 ns ±   4.95 %     629537
-Slice<Array<Int>>.build            584.000 ns ±  17.10 %    1000000
-Slice<Array<Int?>>.build           917.000 ns ±   8.49 %    1000000
-String.build                       500.000 ns ±   8.91 %    1000000
-String.UnicodeScalarView.build    3958.000 ns ±   3.04 %     351918
-String.UTF8View.build              542.000 ns ±  10.33 %    1000000
-Substring.build                   1709.000 ns ±   4.41 %     810685
-Substring.UnicodeScalarView.build 5084.000 ns ±   3.19 %     274560
-Substring.UTF8View.build          1333.000 ns ±   5.89 %    1000000
+name                              time         std        iterations
+--------------------------------------------------------------------
+Array<Any>.build                   1458.000 ns ±  20.73 %     960140
+Array<Int>.build                    375.000 ns ±  34.80 %    1000000
+Array<Int?>.build                   500.000 ns ±  35.49 %    1000000
+ArraySlice<Any>.build              2000.000 ns ±  19.08 %     705144
+ArraySlice<Int>.build               666.000 ns ± 226.13 %    1000000
+ArraySlice<Int?>.build              917.000 ns ± 529.78 %    1000000
+ContiguousArray<Any>.build         1417.000 ns ± 634.64 %     960117
+ContiguousArray<Int>.build          375.000 ns ±  40.89 %    1000000
+ContiguousArray<Int?>.build         500.000 ns ±  37.09 %    1000000
+Data.build                         1166.000 ns ±  21.92 %    1000000
+Dictionary<String, Any>.build     12250.000 ns ±   9.03 %     112155
+Dictionary<String, Double>.build  11041.000 ns ±   9.57 %     125253
+Dictionary<String, Double?>.build 12250.000 ns ±   9.39 %     113199
+Set<Any>.build                     3375.000 ns ± 108.30 %     424266
+Set<Int>.build                      458.000 ns ± 575.10 %    1000000
+Set<Int?>.build                    1041.000 ns ±  23.79 %    1000000
+Slice<Array<Any>>.build            1916.000 ns ±  16.51 %     721703
+Slice<Array<Int>>.build             417.000 ns ±  34.56 %    1000000
+Slice<Array<Int?>>.build            625.000 ns ±  23.90 %    1000000
+String.build                       1958.000 ns ±  25.91 %     715633
+String.UnicodeScalarView.build     3167.000 ns ±  17.48 %     438174
+String.UTF8View.build              2541.000 ns ± 186.62 %     548295
+Substring.build                    2542.000 ns ±  16.28 %     545465
+Substring.UnicodeScalarView.build  7958.000 ns ± 147.37 %     172453
+Substring.UTF8View.build           2833.000 ns ±  20.08 %     486783
 ```
