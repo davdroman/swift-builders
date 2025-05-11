@@ -95,11 +95,11 @@ The library offers a variety of builders out of the box:
 - `SetBuilder`
 - `SliceBuilder`
 - `StringBuilder`
-- `StringUTF8ViewBuilder`
 - `StringUnicodeScalarViewBuilder`
+- `StringUTF8ViewBuilder`
 - `SubstringBuilder`
-- `SubstringUTF8ViewBuilder`
 - `SubstringUnicodeScalarViewBuilder`
+- `SubstringUTF8ViewBuilder`
 
 ## Benchmarks
 
