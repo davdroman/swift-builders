@@ -4,26 +4,6 @@ public protocol _AppendableCollection: Collection {
 	mutating func append(contentsOf newElements: some Sequence<Element>)
 }
 
-extension String.UTF8View: _AppendableCollection {
-	@_spi(Internals)
-	public init(_ elements: some Sequence<Element>) {
-		var result = String().utf8
-		result.append(contentsOf: elements)
-		self = result
-	}
-
-	public mutating func append(contentsOf newElements: some Sequence<Element>) {
-		var result = String(self)
-		switch newElements {
-		case let newElements as String.UTF8View:
-			result.append(contentsOf: String(newElements))
-		default:
-			result.append(contentsOf: String(decoding: Array(newElements), as: UTF8.self))
-		}
-		self = result.utf8
-	}
-}
-
 extension Substring: _AppendableCollection {}
 
 extension Substring.UnicodeScalarView: _AppendableCollection {}
