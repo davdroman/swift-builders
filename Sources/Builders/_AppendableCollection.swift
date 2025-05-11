@@ -4,8 +4,6 @@ public protocol _AppendableCollection: Collection {
 	mutating func append(contentsOf newElements: some Sequence<Element>)
 }
 
-extension Slice: _AppendableCollection where Base: RangeReplaceableCollection {}
-
 extension String: _AppendableCollection {}
 
 extension String.UnicodeScalarView: _AppendableCollection {}

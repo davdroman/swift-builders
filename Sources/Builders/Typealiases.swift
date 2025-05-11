@@ -1,5 +1,3 @@
-public typealias SliceBuilder<Base: RangeReplaceableCollection> = Slice<Base>.Builder
-
 public typealias StringBuilder = String.Builder
 
 public typealias StringUTF8ViewBuilder = String.UTF8View.Builder
