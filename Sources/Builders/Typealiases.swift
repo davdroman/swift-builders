@@ -1,5 +1,3 @@
-public typealias StringBuilder = String.Builder
-
 public typealias StringUTF8ViewBuilder = String.UTF8View.Builder
 
 public typealias StringUnicodeScalarViewBuilder = String.UnicodeScalarView.Builder
