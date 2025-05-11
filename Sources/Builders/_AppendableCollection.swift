@@ -4,8 +4,6 @@ public protocol _AppendableCollection: Collection {
 	mutating func append(contentsOf newElements: some Sequence<Element>)
 }
 
-extension String.UnicodeScalarView: _AppendableCollection {}
-
 extension String.UTF8View: _AppendableCollection {
 	@_spi(Internals)
 	public init(_ elements: some Sequence<Element>) {
