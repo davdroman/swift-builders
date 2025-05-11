@@ -21,7 +21,7 @@ func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: S
     } else {
         event["isFree"] = "true"
     }
-    if let userId = userId {
+    if let userId {
         event["userId"] = userId
     } else {
         event["isGuest"] = "true"
@@ -53,7 +53,7 @@ func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: S
         } else {
             ["isFree": "true"]
         }
-        if let userId = userId {
+        if let userId {
             ["userId": userId]
         } else {
             ["isGuest": "true"]
@@ -75,7 +75,7 @@ func checkoutAnalyticsEvent(didSucceed: Bool, purchaseAmount: Decimal, userId: S
     } else {
         ["isFree": "true"]
     }
-    if let userId = userId {
+    if let userId {
         ["userId": userId]
     } else {
         ["isGuest": "true"]
