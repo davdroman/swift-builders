@@ -12,7 +12,6 @@ let package = Package(
 	],
 	products: [
 		.library(name: "Builders", targets: ["Builders"]),
-		.library(name: "BuildersTestSupport", targets: ["BuildersTestSupport"]),
 	],
 	targets: [
 		.target(name: "Builders"),
