@@ -3,7 +3,7 @@ import Builders
 import BuildersTestSupport
 
 let set = BenchmarkSuite(name: "") {
-	$0.benchmark("Set<Any>.build") {
+	$0.benchmark("Set<AnyHashable>.build") {
 		_ = Set<AnyHashable>.build {
 			if true {
 				1
