@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let slice = BenchmarkSuite(name: "") {
 	$0.benchmark("Slice<Array<Any>>.build") {
@@ -9,9 +8,9 @@ let slice = BenchmarkSuite(name: "") {
 				1
 			}
 			false
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				4
 			} else {
 				"e"
@@ -25,7 +24,7 @@ let slice = BenchmarkSuite(name: "") {
 	$0.benchmark("Slice<Array<Int>>.build") {
 		_ = Slice<[Int]>.build {
 			Slice([420, 69])
-			if `false` {
+			if false {
 				Slice([120])
 				120
 			}
@@ -42,7 +41,7 @@ let slice = BenchmarkSuite(name: "") {
 	$0.benchmark("Slice<Array<Int?>>.build") {
 		_ = Slice<[Int?]>.build {
 			Slice([420, 69])
-			if `false` {
+			if false {
 				Slice([120])
 				120
 			}

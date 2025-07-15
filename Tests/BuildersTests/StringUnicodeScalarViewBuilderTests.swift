@@ -1,22 +1,22 @@
 import Builders
-import BuildersTestSupport
-import XCTest
+import Testing
 
-final class StringUnicodeScalarBuilderTests: XCTestCase {
-	func testBuilder_emptyStringUnicodeScalar() {
+@Suite
+struct StringUnicodeScalarBuilderTests {
+	@Test func empty() {
 		let sut = String.UnicodeScalarView.build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder() {
+	@Test func build() {
 		let sut = String.UnicodeScalarView.build {
 			if true {
 				"1"
 			}
 			"false".unicodeScalars
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				"4"
 			} else {
 				"e"
@@ -26,6 +26,6 @@ final class StringUnicodeScalarBuilderTests: XCTestCase {
 			}
 			"1"
 		}
-		XCTAssert(sut.elementsEqual("1falsee0121".unicodeScalars))
+		#expect(sut.elementsEqual("1falsee0121".unicodeScalars))
 	}
 }

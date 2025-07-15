@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let substring = BenchmarkSuite(name: "") {
 	$0.benchmark("Substring.build") {
@@ -9,9 +8,9 @@ let substring = BenchmarkSuite(name: "") {
 				"1" as Character
 			}
 			"false"
-			if `false` {
+			if false {
 				"c" as Character
-			} else if `false` {
+			} else if false {
 				"4"[...]
 			} else {
 				"e" as Character

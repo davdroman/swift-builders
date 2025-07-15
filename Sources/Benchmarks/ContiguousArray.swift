@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let contiguousArray = BenchmarkSuite(name: "") {
 	$0.benchmark("ContiguousArray<Any>.build") {
@@ -9,9 +8,9 @@ let contiguousArray = BenchmarkSuite(name: "") {
 				1
 			}
 			false
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				4
 			} else {
 				"e"
@@ -25,7 +24,7 @@ let contiguousArray = BenchmarkSuite(name: "") {
 	$0.benchmark("ContiguousArray<Int>.build") {
 		_ = ContiguousArray<Int>.build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}
@@ -42,7 +41,7 @@ let contiguousArray = BenchmarkSuite(name: "") {
 	$0.benchmark("ContiguousArray<Int?>.build") {
 		_ = ContiguousArray<Int?>.build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}

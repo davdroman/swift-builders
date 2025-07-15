@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 import Foundation
 
 let data = BenchmarkSuite(name: "") {
@@ -10,9 +9,9 @@ let data = BenchmarkSuite(name: "") {
 				104
 			}
 			101
-			if `false` {
+			if false {
 				123
-			} else if `false` {
+			} else if false {
 				234
 			} else {
 				108

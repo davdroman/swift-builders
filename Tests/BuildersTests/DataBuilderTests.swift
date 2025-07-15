@@ -1,22 +1,23 @@
 import Builders
-import BuildersTestSupport
-import XCTest
+import Foundation
+import Testing
 
-final class DataBuilderTests: XCTestCase {
-	func testBuilder_emptyData() {
+@Suite
+struct DataBuilderTests {
+	@Test func empty() {
 		let sut = Data.build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder() {
+	@Test func build() {
 		let sut = Data.build {
 			if true {
 				104
 			}
 			101
-			if `false` {
+			if false {
 				123
-			} else if `false` {
+			} else if false {
 				234
 			} else {
 				108
@@ -29,6 +30,6 @@ final class DataBuilderTests: XCTestCase {
 			}
 			Data(" world".utf8)
 		}
-		XCTAssertEqual(sut, Data("hello abc world".utf8))
+		#expect(sut == Data("hello abc world".utf8))
 	}
 }

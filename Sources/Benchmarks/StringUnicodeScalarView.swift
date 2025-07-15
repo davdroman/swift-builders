@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let stringUnicodeScalar = BenchmarkSuite(name: "") {
 	$0.benchmark("String.UnicodeScalarView.build") {
@@ -9,9 +8,9 @@ let stringUnicodeScalar = BenchmarkSuite(name: "") {
 				"1"
 			}
 			"false".unicodeScalars
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				"4"
 			} else {
 				"e"

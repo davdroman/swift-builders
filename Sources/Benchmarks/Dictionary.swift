@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let dictionary = BenchmarkSuite(name: "") {
 	$0.benchmark("Dictionary<String, Any>.build") {
@@ -9,9 +8,9 @@ let dictionary = BenchmarkSuite(name: "") {
 				["a": false]
 			}
 			("b", 3)
-			if `false` {
+			if false {
 				("c", 23.32)
-			} else if `false` {
+			} else if false {
 				["d": 23.32]
 			} else {
 				("b", "xyz")
@@ -29,9 +28,9 @@ let dictionary = BenchmarkSuite(name: "") {
 				["a": 2]
 			}
 			("b", 3)
-			if `false` {
+			if false {
 				("c", 23.32)
-			} else if `false` {
+			} else if false {
 				["d": 23.32]
 			} else {
 				("b", 523)
@@ -49,9 +48,9 @@ let dictionary = BenchmarkSuite(name: "") {
 				["a": 2]
 			}
 			("b", 3)
-			if `false` {
+			if false {
 				("c", nil)
-			} else if `false` {
+			} else if false {
 				["d": 23.32]
 			} else {
 				("b", 523)

@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let substringUTF8View = BenchmarkSuite(name: "") {
 	$0.benchmark("Substring.UTF8View.build") {
@@ -9,9 +8,9 @@ let substringUTF8View = BenchmarkSuite(name: "") {
 				"1"[...].utf8
 			}
 			"false"[...].utf8
-			if `false` {
+			if false {
 				99
-			} else if `false` {
+			} else if false {
 				"4"[...].utf8
 			} else {
 				97
