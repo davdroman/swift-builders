@@ -1,13 +1,14 @@
 import Builders
-import XCTest
+import Testing
 
-final class ContiguousArrayBuilderTests: XCTestCase {
-	func testBuilder_emptyArraySlice() {
+@Suite
+struct ContiguousArrayBuilderTests {
+	@Test func empty() {
 		let sut = ContiguousArray<Any>.build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder_arraySliceOfAny() {
+	@Test func any() {
 		let sut = ContiguousArray<Any>.build {
 			if true {
 				1
@@ -25,17 +26,17 @@ final class ContiguousArrayBuilderTests: XCTestCase {
 			}
 			"1"
 		}
-		XCTAssertEqual(sut.count, 7)
-		XCTAssertEqual(sut[0] as? Int, 1)
-		XCTAssertEqual(sut[1] as? Bool, false)
-		XCTAssertEqual(sut[2] as? String, "e")
-		XCTAssertEqual(sut[3] as? String, "0")
-		XCTAssertEqual(sut[4] as? String, "1")
-		XCTAssertEqual(sut[5] as? String, "2")
-		XCTAssertEqual(sut[6] as? String, "1")
+		#expect(sut.count == 7)
+		#expect(sut[0] as? Int == 1)
+		#expect(sut[1] as? Bool == false)
+		#expect(sut[2] as? String == "e")
+		#expect(sut[3] as? String == "0")
+		#expect(sut[4] as? String == "1")
+		#expect(sut[5] as? String == "2")
+		#expect(sut[6] as? String == "1")
 	}
 
-	func testBuilder_arraySliceOfInt() {
+	@Test func int() {
 		let sut = ContiguousArray<Int>.build {
 			[420, 69]
 			if false {
@@ -51,7 +52,7 @@ final class ContiguousArrayBuilderTests: XCTestCase {
 				1
 			}
 		}
-		XCTAssertEqual(sut, [
+		#expect(sut == [
 			420,
 			69,
 			39,
@@ -61,7 +62,7 @@ final class ContiguousArrayBuilderTests: XCTestCase {
 		])
 	}
 
-	func testBuilder_arraySliceOfOptional() {
+	@Test func optional() {
 		let sut = ContiguousArray<Int?>.build {
 			[420, 69]
 			if false {
@@ -76,7 +77,7 @@ final class ContiguousArrayBuilderTests: XCTestCase {
 			}
 			nil
 		}
-		XCTAssertEqual(sut, [
+		#expect(sut == [
 			420,
 			69,
 			nil,
