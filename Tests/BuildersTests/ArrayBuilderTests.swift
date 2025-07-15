@@ -4,12 +4,12 @@ import Testing
 
 @Suite
 struct ArrayBuilderTests {
-	@Test func testBuilder_emptyArray() {
+	@Test func empty() {
 		let sut = [Any].build {}
 		#expect(sut.isEmpty)
 	}
 
-	@Test func testBuilder_arrayOfAny() {
+	@Test func any() {
 		let sut = [Any].build {
 			if true {
 				1
@@ -37,7 +37,7 @@ struct ArrayBuilderTests {
 		#expect(sut[6] as? String == "1")
 	}
 
-	@Test func testBuilder_arrayOfInt() {
+	@Test func int() {
 		let sut = [Int].build {
 			[420, 69]
 			if false {
@@ -63,7 +63,7 @@ struct ArrayBuilderTests {
 		])
 	}
 
-	@Test func testBuilder_arrayOfOptional() {
+	@Test func optional() {
 		let sut = [Int?].build {
 			[420, 69]
 			if false {
