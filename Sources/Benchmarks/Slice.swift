@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let slice = BenchmarkSuite(name: "") {
 	$0.benchmark("Slice<Array<Any>>.build") {

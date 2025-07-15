@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let set = BenchmarkSuite(name: "") {
 	$0.benchmark("Set<AnyHashable>.build") {

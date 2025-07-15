@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let substring = BenchmarkSuite(name: "") {
 	$0.benchmark("Substring.build") {

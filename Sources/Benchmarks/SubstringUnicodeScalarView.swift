@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let substringUnicodeScalar = BenchmarkSuite(name: "") {
 	$0.benchmark("Substring.UnicodeScalarView.build") {

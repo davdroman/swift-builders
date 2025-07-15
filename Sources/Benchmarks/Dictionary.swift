@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let dictionary = BenchmarkSuite(name: "") {
 	$0.benchmark("Dictionary<String, Any>.build") {

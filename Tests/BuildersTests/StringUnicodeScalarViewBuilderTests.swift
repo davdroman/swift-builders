@@ -1,5 +1,4 @@
 import Builders
-import BuildersTestSupport
 import XCTest
 
 final class StringUnicodeScalarBuilderTests: XCTestCase {

@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 import Foundation
 
 let data = BenchmarkSuite(name: "") {

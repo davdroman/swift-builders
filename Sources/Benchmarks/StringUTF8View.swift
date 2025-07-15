@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import BuildersTestSupport
 
 let stringUTF8View = BenchmarkSuite(name: "") {
 	$0.benchmark("String.UTF8View.build") {
