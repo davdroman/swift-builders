@@ -1,13 +1,14 @@
 import Builders
-import XCTest
+import Testing
 
-final class StringBuilderTests: XCTestCase {
-	func testBuilder_emptyString() {
+@Suite
+struct StringBuilderTests {
+	@Test func empty() {
 		let sut = String.build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder() {
+	@Test func build() {
 		let sut = String.build {
 			if true {
 				"1" as Character
@@ -25,6 +26,6 @@ final class StringBuilderTests: XCTestCase {
 			}
 			"1" as Character
 		}
-		XCTAssertEqual(sut, "1falsee0121")
+		#expect(sut == "1falsee0121")
 	}
 }
