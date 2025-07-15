@@ -27,15 +27,11 @@ jobs:
           - tvOS
           - watchOS
         swift:
-          - "5.10"
           - "6.0"
           - "6.1"
+          - "6.2"
         include:
           - action: test
-          - platform: tvOS
-            action: build
-          - platform: watchOS
-            action: build
     steps:
       - uses: actions/checkout@v4
       - uses: mxcl/xcodebuild@v3
@@ -52,9 +48,9 @@ jobs:
       fail-fast: false
       matrix:
         swift:
-          - "5.10"
           - "6.0"
           - "6.1"
+          - "6.2"
     container:
       image: swift:${{ matrix.swift }}
     steps:
