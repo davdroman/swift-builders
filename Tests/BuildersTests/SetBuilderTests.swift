@@ -1,13 +1,14 @@
 import Builders
-import XCTest
+import Testing
 
-final class SetBuilderTests: XCTestCase {
-	func testBuilder_emptySet() {
+@Suite
+struct SetBuilderTests {
+	@Test func empty() {
 		let sut = Set<AnyHashable>.build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder_setOfAnyHashable() {
+	@Test func anyHashable() {
 		let sut = Set<AnyHashable>.build {
 			if true {
 				1
@@ -25,7 +26,7 @@ final class SetBuilderTests: XCTestCase {
 			}
 			"1"
 		}
-		XCTAssertEqual(sut, [
+		#expect(sut == [
 			1,
 			false,
 			"e",
@@ -35,7 +36,7 @@ final class SetBuilderTests: XCTestCase {
 		])
 	}
 
-	func testBuilder_setOfInt() {
+	@Test func int() {
 		let sut = Set<Int>.build {
 			[420, 69]
 			if false {
@@ -51,7 +52,7 @@ final class SetBuilderTests: XCTestCase {
 				1
 			}
 		}
-		XCTAssertEqual(sut, [
+		#expect(sut == [
 			420,
 			69,
 			39,
@@ -61,7 +62,7 @@ final class SetBuilderTests: XCTestCase {
 		])
 	}
 
-	func testBuilder_setOfOptional() {
+	@Test func optional() {
 		let sut = Set<Int?>.build {
 			[420, 69]
 			if false {
@@ -76,7 +77,7 @@ final class SetBuilderTests: XCTestCase {
 			}
 			nil
 		}
-		XCTAssertEqual(sut, [
+		#expect(sut == [
 			420,
 			69,
 			nil,
