@@ -1,4 +1,4 @@
-// swift-tools-version: 5.10
+// swift-tools-version: 6.0
 
 import PackageDescription
 
@@ -33,3 +33,11 @@ let package = Package(
 package.dependencies = [
 	.package(url: "https://github.com/google/swift-benchmark", from: "0.1.2"),
 ]
+
+for target in package.targets {
+	target.swiftSettings = target.swiftSettings ?? []
+	target.swiftSettings? += [
+		.enableUpcomingFeature("ExistentialAny"),
+		.enableUpcomingFeature("InternalImportsByDefault"),
+	]
+}

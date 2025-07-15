@@ -1,4 +1,4 @@
-import Benchmark
+@preconcurrency import Benchmark
 
 let suites = [
 	array,

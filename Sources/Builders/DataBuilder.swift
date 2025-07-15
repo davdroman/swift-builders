@@ -1,5 +1,5 @@
 #if canImport(Foundation)
-import Foundation
+public import Foundation
 
 @resultBuilder
 public struct DataBuilder {
