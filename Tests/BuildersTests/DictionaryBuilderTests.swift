@@ -1,13 +1,14 @@
 import Builders
-import XCTest
+import Testing
 
-final class DictionaryBuilderTests: XCTestCase {
-	func testBuilder_emptyDictionary() {
+@Suite
+struct DictionaryBuilderTests {
+	@Test func empty() {
 		let sut = [String: Any].build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder_anyValues() {
+	@Test func any() {
 		let sut = [String: Any].build {
 			if true {
 				["a": false]
@@ -26,16 +27,16 @@ final class DictionaryBuilderTests: XCTestCase {
 				("f", i)
 			}
 		}
-		XCTAssertEqual(sut.count, 4)
-		XCTAssertEqual(sut["a"] as? Bool, false)
-		XCTAssertEqual(sut["b"] as? String, "xyz")
-		XCTAssertNil(sut["c"])
-		XCTAssertNil(sut["d"])
-		XCTAssertEqual(sut["e"] as? String, "overriden")
-		XCTAssertEqual(sut["f"] as? Int, 3)
+		#expect(sut.count == 4)
+		#expect(sut["a"] as? Bool == false)
+		#expect(sut["b"] as? String == "xyz")
+		#expect(sut["c"] == nil)
+		#expect(sut["d"] == nil)
+		#expect(sut["e"] as? String == "overriden")
+		#expect(sut["f"] as? Int == 3)
 	}
 
-	func testBuilder_doubleValues() {
+	@Test func double() {
 		let sut = [String: Double].build {
 			if true {
 				["a": 2]
@@ -54,16 +55,16 @@ final class DictionaryBuilderTests: XCTestCase {
 				("f", Double(i))
 			}
 		}
-		XCTAssertEqual(sut.count, 4)
-		XCTAssertEqual(sut["a"], 2)
-		XCTAssertEqual(sut["b"], 523)
-		XCTAssertNil(sut["c"])
-		XCTAssertNil(sut["d"])
-		XCTAssertEqual(sut["e"], 12)
-		XCTAssertEqual(sut["f"], 3)
+		#expect(sut.count == 4)
+		#expect(sut["a"] == 2)
+		#expect(sut["b"] == 523)
+		#expect(sut["c"] == nil)
+		#expect(sut["d"] == nil)
+		#expect(sut["e"] == 12)
+		#expect(sut["f"] == 3)
 	}
 
-	func testBuilder_optionalDoubleValues() {
+	@Test func optional() {
 		let sut = [String: Double?].build {
 			if true {
 				["a": 2]
@@ -82,12 +83,12 @@ final class DictionaryBuilderTests: XCTestCase {
 			}
 			["f": nil]
 		}
-		XCTAssertEqual(sut.count, 4)
-		XCTAssertEqual(sut["a"], 2)
-		XCTAssertEqual(sut["b"], 523)
-		XCTAssertEqual(sut["c"], Double??.none)
-		XCTAssertEqual(sut["d"], Double??.none)
-		XCTAssertEqual(sut["e"], Double?.none)
-		XCTAssertEqual(sut["f"], Double?.none)
+		#expect(sut.count == 4)
+		#expect(sut["a"] == 2)
+		#expect(sut["b"] == 523)
+		#expect(sut["c"] == Double??.none)
+		#expect(sut["d"] == Double??.none)
+		#expect(sut["e"] == Double?.none)
+		#expect(sut["f"] == Double?.none)
 	}
 }
