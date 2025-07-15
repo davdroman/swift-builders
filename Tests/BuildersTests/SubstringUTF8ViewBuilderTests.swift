@@ -1,13 +1,14 @@
 import Builders
-import XCTest
+import Testing
 
-final class SubstringUTF8ViewBuilderTests: XCTestCase {
-	func testBuilder_emptySubstringUTF8View() {
+@Suite
+struct SubstringUTF8ViewBuilderTests {
+	@Test func empty() {
 		let sut = Substring.UTF8View.build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder() {
+	@Test func build() {
 		let sut = Substring.UTF8View.build {
 			if true {
 				"1"[...].utf8
@@ -25,6 +26,6 @@ final class SubstringUTF8ViewBuilderTests: XCTestCase {
 			}
 			107
 		}
-		XCTAssertEqual(Substring(sut), "1falsea012k")
+		#expect(Substring(sut) == "1falsea012k")
 	}
 }
