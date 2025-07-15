@@ -1,13 +1,14 @@
 import Builders
-import XCTest
+import Testing
 
-final class SubstringBuilderTests: XCTestCase {
-	func testBuilder_emptySubstring() {
+@Suite
+struct SubstringBuilderTests {
+	@Test func empty() {
 		let sut = Substring.build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder() {
+	@Test func build() {
 		let sut = Substring.build {
 			if true {
 				"1" as Character
@@ -25,6 +26,6 @@ final class SubstringBuilderTests: XCTestCase {
 			}
 			"1" as Character
 		}
-		XCTAssertEqual(sut, "1falsee0121")
+		#expect(sut == "1falsee0121")
 	}
 }
