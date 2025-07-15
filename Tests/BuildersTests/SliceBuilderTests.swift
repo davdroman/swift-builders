@@ -1,13 +1,14 @@
 import Builders
-import XCTest
+import Testing
 
-final class SliceBuilderTests: XCTestCase {
-	func testBuilder_emptyArraySlice() {
+@Suite
+struct SliceBuilderTests {
+	@Test func empty() {
 		let sut = Slice<[Any]>.build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder_arraySliceOfAny() {
+	@Test func any() {
 		let sut = Slice<[Any]>.build {
 			if true {
 				1
@@ -25,17 +26,17 @@ final class SliceBuilderTests: XCTestCase {
 			}
 			"1"
 		}
-		XCTAssertEqual(sut.count, 7)
-		XCTAssertEqual(sut[0] as? Int, 1)
-		XCTAssertEqual(sut[1] as? Bool, false)
-		XCTAssertEqual(sut[2] as? String, "e")
-		XCTAssertEqual(sut[3] as? String, "0")
-		XCTAssertEqual(sut[4] as? String, "1")
-		XCTAssertEqual(sut[5] as? String, "2")
-		XCTAssertEqual(sut[6] as? String, "1")
+		#expect(sut.count == 7)
+		#expect(sut[0] as? Int == 1)
+		#expect(sut[1] as? Bool == false)
+		#expect(sut[2] as? String == "e")
+		#expect(sut[3] as? String == "0")
+		#expect(sut[4] as? String == "1")
+		#expect(sut[5] as? String == "2")
+		#expect(sut[6] as? String == "1")
 	}
 
-	func testBuilder_arraySliceOfInt() {
+	@Test func int() {
 		let sut = Slice<[Int]>.build {
 			Slice([420, 69])
 			if false {
@@ -51,16 +52,16 @@ final class SliceBuilderTests: XCTestCase {
 				1
 			}
 		}
-		XCTAssertEqual(sut.count, 6)
-		XCTAssertEqual(sut[0], 420)
-		XCTAssertEqual(sut[1], 69)
-		XCTAssertEqual(sut[2], 39)
-		XCTAssertEqual(sut[3], 32)
-		XCTAssertEqual(sut[4], 21)
-		XCTAssertEqual(sut[5], 1)
+		#expect(sut.count == 6)
+		#expect(sut[0] == 420)
+		#expect(sut[1] == 69)
+		#expect(sut[2] == 39)
+		#expect(sut[3] == 32)
+		#expect(sut[4] == 21)
+		#expect(sut[5] == 1)
 	}
 
-	func testBuilder_arraySliceOfOptional() {
+	@Test func optional() {
 		let sut = Slice<[Int?]>.build {
 			Slice([420, 69])
 			if false {
@@ -75,14 +76,14 @@ final class SliceBuilderTests: XCTestCase {
 			}
 			nil
 		}
-		XCTAssertEqual(sut.count, 8)
-		XCTAssertEqual(sut[0], 420)
-		XCTAssertEqual(sut[1], 69)
-		XCTAssertEqual(sut[2], nil)
-		XCTAssertEqual(sut[3], 39)
-		XCTAssertEqual(sut[4], 32)
-		XCTAssertEqual(sut[5], 21)
-		XCTAssertEqual(sut[6], 1)
-		XCTAssertEqual(sut[7], nil)
+		#expect(sut.count == 8)
+		#expect(sut[0] == 420)
+		#expect(sut[1] == 69)
+		#expect(sut[2] == nil)
+		#expect(sut[3] == 39)
+		#expect(sut[4] == 32)
+		#expect(sut[5] == 21)
+		#expect(sut[6] == 1)
+		#expect(sut[7] == nil)
 	}
 }
