@@ -9,9 +9,9 @@ let arraySlice = BenchmarkSuite(name: "") {
 				1
 			}
 			false
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				4
 			} else {
 				"e"
@@ -25,7 +25,7 @@ let arraySlice = BenchmarkSuite(name: "") {
 	$0.benchmark("ArraySlice<Int>.build") {
 		_ = ArraySlice<Int>.build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}
@@ -42,7 +42,7 @@ let arraySlice = BenchmarkSuite(name: "") {
 	$0.benchmark("ArraySlice<Int?>.build") {
 		_ = ArraySlice<Int?>.build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}

@@ -9,9 +9,9 @@ let stringUTF8View = BenchmarkSuite(name: "") {
 				"1".utf8
 			}
 			"false".utf8
-			if `false` {
+			if false {
 				99
-			} else if `false` {
+			} else if false {
 				"4".utf8
 			} else {
 				97

@@ -14,9 +14,9 @@ final class SubstringBuilderTests: XCTestCase {
 				"1" as Character
 			}
 			"false"
-			if `false` {
+			if false {
 				"c" as Character
-			} else if `false` {
+			} else if false {
 				"4"[...]
 			} else {
 				"e" as Character

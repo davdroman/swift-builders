@@ -17,15 +17,11 @@ let package = Package(
 		.target(name: "Builders"),
 		.testTarget(name: "BuildersTests", dependencies: [
 			.target(name: "Builders"),
-			.target(name: "BuildersTestSupport"),
 		]),
-
-		.target(name: "BuildersTestSupport"),
 
 		.executableTarget(name: "Benchmarks", dependencies: [
 			.product(name: "Benchmark", package: "swift-benchmark"),
 			.target(name: "Builders"),
-			.target(name: "BuildersTestSupport"),
 		]),
 	]
 )

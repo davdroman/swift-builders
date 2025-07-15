@@ -14,9 +14,9 @@ final class SubstringUnicodeScalarBuilderTests: XCTestCase {
 				"1"
 			}
 			"false"[...].unicodeScalars
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				"4"
 			} else {
 				"e"

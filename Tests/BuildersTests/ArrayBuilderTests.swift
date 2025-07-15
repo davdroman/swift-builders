@@ -1,22 +1,23 @@
 import Builders
 import BuildersTestSupport
-import XCTest
+import Testing
 
-final class ArrayBuilderTests: XCTestCase {
-	func testBuilder_emptyArray() {
+@Suite
+struct ArrayBuilderTests {
+	@Test func testBuilder_emptyArray() {
 		let sut = [Any].build {}
-		XCTAssertEqual(sut.isEmpty, true)
+		#expect(sut.isEmpty)
 	}
 
-	func testBuilder_arrayOfAny() {
+	@Test func testBuilder_arrayOfAny() {
 		let sut = [Any].build {
 			if true {
 				1
 			}
 			false
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				4
 			} else {
 				"e"
@@ -26,20 +27,20 @@ final class ArrayBuilderTests: XCTestCase {
 			}
 			"1"
 		}
-		XCTAssertEqual(sut.count, 7)
-		XCTAssertEqual(sut[0] as? Int, 1)
-		XCTAssertEqual(sut[1] as? Bool, false)
-		XCTAssertEqual(sut[2] as? String, "e")
-		XCTAssertEqual(sut[3] as? String, "0")
-		XCTAssertEqual(sut[4] as? String, "1")
-		XCTAssertEqual(sut[5] as? String, "2")
-		XCTAssertEqual(sut[6] as? String, "1")
+		#expect(sut.count == 7)
+		#expect(sut[0] as? Int == 1)
+		#expect(sut[1] as? Bool == false)
+		#expect(sut[2] as? String == "e")
+		#expect(sut[3] as? String == "0")
+		#expect(sut[4] as? String == "1")
+		#expect(sut[5] as? String == "2")
+		#expect(sut[6] as? String == "1")
 	}
 
-	func testBuilder_arrayOfInt() {
+	@Test func testBuilder_arrayOfInt() {
 		let sut = [Int].build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}
@@ -52,7 +53,7 @@ final class ArrayBuilderTests: XCTestCase {
 				1
 			}
 		}
-		XCTAssertEqual(sut, [
+		#expect(sut == [
 			420,
 			69,
 			39,
@@ -62,10 +63,10 @@ final class ArrayBuilderTests: XCTestCase {
 		])
 	}
 
-	func testBuilder_arrayOfOptional() {
+	@Test func testBuilder_arrayOfOptional() {
 		let sut = [Int?].build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}
@@ -77,7 +78,7 @@ final class ArrayBuilderTests: XCTestCase {
 			}
 			nil
 		}
-		XCTAssertEqual(sut, [
+		#expect(sut == [
 			420,
 			69,
 			nil,

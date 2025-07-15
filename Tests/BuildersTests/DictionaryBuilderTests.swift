@@ -14,9 +14,9 @@ final class DictionaryBuilderTests: XCTestCase {
 				["a": false]
 			}
 			("b", 3)
-			if `false` {
+			if false {
 				("c", 23.32)
-			} else if `false` {
+			} else if false {
 				["d": 23.32]
 			} else {
 				("b", "xyz")
@@ -42,9 +42,9 @@ final class DictionaryBuilderTests: XCTestCase {
 				["a": 2]
 			}
 			("b", 3)
-			if `false` {
+			if false {
 				("c", 23.32)
-			} else if `false` {
+			} else if false {
 				["d": 23.32]
 			} else {
 				("b", 523)
@@ -70,9 +70,9 @@ final class DictionaryBuilderTests: XCTestCase {
 				["a": 2]
 			}
 			("b", 3)
-			if `false` {
+			if false {
 				("c", nil)
-			} else if `false` {
+			} else if false {
 				["d": 23.32]
 			} else {
 				("b", 523)

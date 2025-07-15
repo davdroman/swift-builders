@@ -14,9 +14,9 @@ final class SliceBuilderTests: XCTestCase {
 				1
 			}
 			false
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				4
 			} else {
 				"e"
@@ -39,7 +39,7 @@ final class SliceBuilderTests: XCTestCase {
 	func testBuilder_arraySliceOfInt() {
 		let sut = Slice<[Int]>.build {
 			Slice([420, 69])
-			if `false` {
+			if false {
 				Slice([120])
 				120
 			}
@@ -64,7 +64,7 @@ final class SliceBuilderTests: XCTestCase {
 	func testBuilder_arraySliceOfOptional() {
 		let sut = Slice<[Int?]>.build {
 			Slice([420, 69])
-			if `false` {
+			if false {
 				Slice([120])
 				120
 			}

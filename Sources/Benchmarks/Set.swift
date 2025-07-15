@@ -9,9 +9,9 @@ let set = BenchmarkSuite(name: "") {
 				1
 			}
 			false
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				4
 			} else {
 				"e"
@@ -25,7 +25,7 @@ let set = BenchmarkSuite(name: "") {
 	$0.benchmark("Set<Int>.build") {
 		_ = Set<Int>.build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}
@@ -42,7 +42,7 @@ let set = BenchmarkSuite(name: "") {
 	$0.benchmark("Set<Int?>.build") {
 		_ = Set<Int?>.build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}

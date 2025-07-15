@@ -14,9 +14,9 @@ final class ContiguousArrayBuilderTests: XCTestCase {
 				1
 			}
 			false
-			if `false` {
+			if false {
 				"c"
-			} else if `false` {
+			} else if false {
 				4
 			} else {
 				"e"
@@ -39,7 +39,7 @@ final class ContiguousArrayBuilderTests: XCTestCase {
 	func testBuilder_arraySliceOfInt() {
 		let sut = ContiguousArray<Int>.build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}
@@ -65,7 +65,7 @@ final class ContiguousArrayBuilderTests: XCTestCase {
 	func testBuilder_arraySliceOfOptional() {
 		let sut = ContiguousArray<Int?>.build {
 			[420, 69]
-			if `false` {
+			if false {
 				[120]
 				120
 			}

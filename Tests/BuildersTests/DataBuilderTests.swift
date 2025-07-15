@@ -14,9 +14,9 @@ final class DataBuilderTests: XCTestCase {
 				104
 			}
 			101
-			if `false` {
+			if false {
 				123
-			} else if `false` {
+			} else if false {
 				234
 			} else {
 				108
