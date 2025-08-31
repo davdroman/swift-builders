@@ -1,6 +1,5 @@
 @preconcurrency import Benchmark
 import Builders
-import Foundation
 
 let optionSet = BenchmarkSuite(name: "") {
 	struct Options: OptionSet {
