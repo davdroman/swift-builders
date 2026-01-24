@@ -71,10 +71,6 @@ jobs:
           max_attempts: 3
           command: xcodebuild -downloadPlatform ${{ matrix.platform }}
 
-      - if: ${{ matrix.platform != 'macOS' && matrix.platform != 'mac-catalyst' }}
-        name: Shutdown All Simulators
-        run: xcrun simctl shutdown all
-
       - name: Run Tests
         uses: mxcl/xcodebuild@v3
         with:
