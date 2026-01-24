@@ -77,8 +77,6 @@ jobs:
           platform: ${{ matrix.platform }}
           swift: ~${{ matrix.swift }}
           action: test
-          workspace: Builders.xcworkspace
-          scheme: Builders
           verbosity: xcbeautify
 
   linux:
