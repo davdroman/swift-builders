@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "862E0B6E-2B91-4225-9BCE-A58EFA2EC405",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "BuildersTests",
+        "name" : "BuildersTests"
+      }
+    }
+  ],
+  "version" : 1
+}
