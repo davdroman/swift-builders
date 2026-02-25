@@ -25,7 +25,7 @@ let package = Package(
 			.product(name: "Benchmark", package: "swift-benchmark"),
 			.target(name: "Builders"),
 		]),
-	]
+	],
 )
 
 package.dependencies += [
