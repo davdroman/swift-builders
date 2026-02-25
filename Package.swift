@@ -1,14 +1,16 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.1
 
 import PackageDescription
 
 let package = Package(
 	name: "swift-builders",
 	platforms: [
-		.iOS(.v12),
+		.iOS(.v13),
+		.macCatalyst(.v13),
 		.macOS(.v10_15),
-		.tvOS(.v12),
-		.watchOS(.v4),
+		.tvOS(.v13),
+		.visionOS(.v1),
+		.watchOS(.v6),
 	],
 	products: [
 		.library(name: "Builders", targets: ["Builders"]),
@@ -26,7 +28,7 @@ let package = Package(
 	]
 )
 
-package.dependencies = [
+package.dependencies += [
 	.package(url: "https://github.com/google/swift-benchmark", from: "0.1.2"),
 ]
 
@@ -35,5 +37,6 @@ for target in package.targets {
 	target.swiftSettings? += [
 		.enableUpcomingFeature("ExistentialAny"),
 		.enableUpcomingFeature("InternalImportsByDefault"),
+		.enableUpcomingFeature("MemberImportVisibility"),
 	]
 }
