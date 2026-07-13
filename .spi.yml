@@ -9,3 +9,4 @@ builder:
     scheme: Builders
   - platform: watchos
     scheme: Builders
+  - documentation_targets: [Builders]
