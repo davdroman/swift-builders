@@ -11,7 +11,10 @@ public struct SubstringUTF8ViewViewBuilder {
 	}
 
 	@inlinable
-	public static func buildPartialBlock(accumulated: Substring.UTF8View, next: Substring.UTF8View) -> Substring.UTF8View {
+	public static func buildPartialBlock(
+		accumulated: Substring.UTF8View,
+		next: Substring.UTF8View,
+	) -> Substring.UTF8View {
 		(Substring(accumulated) + Substring(next)).utf8
 	}
 
