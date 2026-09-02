@@ -146,3 +146,12 @@ Substring.build                    417.000 ns ±  40.89 %    1000000
 Substring.UnicodeScalarView.build 8291.000 ns ±  11.36 %     167628
 Substring.UTF8View.build           875.000 ns ±  24.60 %    1000000
 ```
+
+## Development
+
+Install [Mise](https://mise.jdx.dev/), then install the project tools and Git hooks:
+
+```sh
+mise install
+mise exec -- hk install --mise
+```
