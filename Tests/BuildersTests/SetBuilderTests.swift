@@ -8,7 +8,7 @@ struct SetBuilderTests {
 		#expect(sut.isEmpty)
 	}
 
-	@Test func anyHashable() {
+	@Test func `AnyHashable`() {
 		let sut = Set<AnyHashable>.build {
 			if true {
 				1
