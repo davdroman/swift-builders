@@ -11,7 +11,9 @@ public struct ContiguousArrayBuilder<Element> {
 	}
 
 	@inlinable
-	public static func buildPartialBlock(accumulated: ContiguousArray<Element>, next: ContiguousArray<Element>) -> ContiguousArray<Element> {
+	public static func buildPartialBlock(accumulated: ContiguousArray<Element>,
+	                                     next: ContiguousArray<Element>) -> ContiguousArray<Element>
+	{
 		accumulated + next
 	}
 

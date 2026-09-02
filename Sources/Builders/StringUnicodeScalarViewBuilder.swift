@@ -11,7 +11,9 @@ public struct StringUnicodeScalarViewBuilder {
 	}
 
 	@inlinable
-	public static func buildPartialBlock(accumulated: String.UnicodeScalarView, next: String.UnicodeScalarView) -> String.UnicodeScalarView {
+	public static func buildPartialBlock(accumulated: String.UnicodeScalarView, next: String.UnicodeScalarView) -> String
+		.UnicodeScalarView
+	{
 		accumulated + next
 	}
 

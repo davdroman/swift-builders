@@ -11,7 +11,9 @@ public struct ArraySliceBuilder<Element> {
 	}
 
 	@inlinable
-	public static func buildPartialBlock(accumulated: ArraySlice<Element>, next: ArraySlice<Element>) -> ArraySlice<Element> {
+	public static func buildPartialBlock(accumulated: ArraySlice<Element>,
+	                                     next: ArraySlice<Element>) -> ArraySlice<Element>
+	{
 		accumulated + next
 	}
 
