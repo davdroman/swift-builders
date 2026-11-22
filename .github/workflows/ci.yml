@@ -59,7 +59,7 @@ jobs:
         with:
           swift: ~${{ matrix.swift }}
           action: none
-          verbosity: xcbeautify
+          verbosity: verbose
 
       - if: ${{ matrix.platform != 'macOS' && matrix.platform != 'mac-catalyst' }}
         name: Initialize Simulator Service
@@ -80,7 +80,7 @@ jobs:
           swift: ~${{ matrix.swift }}
           action: test
           scheme: Builders
-          verbosity: xcbeautify
+          verbosity: verbose
 
   linux:
     if: github.event_name != 'pull_request' || !contains(github.event.pull_request.title, '[skip ci]')
